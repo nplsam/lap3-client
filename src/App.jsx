@@ -9,7 +9,8 @@ const App = () => {
       <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Pages.HomePage />}/>
-
+            <Route path="/notes" element={<Pages.NotesPage />}/>
+            
             <Route path="*" element={<Pages.NotFoundPage />}/>
           </Route>
       </Routes>
