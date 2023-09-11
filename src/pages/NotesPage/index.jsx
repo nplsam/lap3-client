@@ -151,6 +151,8 @@ async function handleSave() {
     }
 
     console.log('Note saved successfully!');
+    setTitle('');
+    setSubject('');
   } catch (error) {
     console.error('Error updating the note:', error);
   }
