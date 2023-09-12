@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebfce3;
+  padding: 50px 20px;
+  border-radius: 40px;
+  width: 550px;
+  margin: 2vh auto;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+}
+
+.timer {
+  padding: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+  color: #333;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 80%;
+}
+
+select {
+  padding: 2px;
+  font-size: 20px;
+  border-radius: 20px;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  background-color: transparent;
+  border: 1px solid green;
+  color: green;
+  cursor: pointer;
+}
+
+select:hover,
+select:focus {
+  border: 0.5px inset green;
+}
+
+select::-webkit-scrollbar {
+  width: 10px;
+}
+
+select::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #80c38e;
+}
+
+select::-webkit-scrollbar-track {
+  background-color: #cef0ba;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttons, 
+.play-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.play-buttons button {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 25px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border: 1.5px solid green;
+  border-radius: 20px;
+  background-color: transparent;
+  color: green;
+  transition: background-color 0.3s ease;
+  width: 100px;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: #d7fcbf;
+  border: 0.5px inset #008000;
+}
+
+.message {
+  margin:0; 
+  font-size: 50px;
+  color: #333;
+}
+
