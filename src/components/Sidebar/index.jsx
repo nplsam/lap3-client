@@ -1,14 +1,19 @@
-//
-export default function Sidebar(props) {
+import React from 'react'
+
+const Sidebar = (props) => {
+
   const noteElements = props.notes.map((note, index) => (
     <div key={note.id}>
       <div
         className={`title ${
           note.id === props.currentNote.id ? "selected-note" : ""
         }`}
-        onClick={() => props.setCurrentNoteId(note.id)}
+        onClick={() => { 
+          props.setCurrentNoteId(note.id)
+          props.setSelectedNoteTitle(note.title)
+        }}
       >
-        <h4 className="text-snippet">{note.body.split("\n")[0]}</h4>
+        <h4 className="text-snippet">{note.title || "Untitled Note"}</h4>
         <button
           className="delete-btn"
           onClick={() => props.deleteNote(note.id)}
@@ -22,7 +27,7 @@ export default function Sidebar(props) {
   return (
     <section className="pane sidebar">
       <div className="sidebar--header">
-        <h3>Notes</h3>
+        <h3>{props.selectedNoteTitle || "Notes"}</h3>
         <button className="new-note" onClick={props.newNote}>
           +
         </button>
@@ -31,3 +36,5 @@ export default function Sidebar(props) {
     </section>
   );
 }
+
+export default Sidebar

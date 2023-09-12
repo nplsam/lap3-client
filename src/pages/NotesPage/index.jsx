@@ -8,6 +8,7 @@ const NotesPage = () => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState(""); 
+  const [selectedNoteTitle, setSelectedNoteTitle] = useState("");
 
   const currentNote =
     notes.find((note) => note.id === currentNoteId) || notes[0];
@@ -55,7 +56,7 @@ async function createNewNote() {
   const newNote = {
     title: title,
     subject: subject,
-    body: "# New Note",
+    body: text,
   };
 
   try {
@@ -139,7 +140,14 @@ async function handleSave() {
       throw new Error('Failed to update the note');
     }
 
-    console.log('Note saved successfully!');
+    setSelectedNoteTitle(title)
+
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === currentNoteId ? { ...note, title: title } : note
+      )
+    );
+
     setTitle('');
     setSubject('');
   } catch (error) {
@@ -165,7 +173,7 @@ async function handleSave() {
             setSubject={setSubject} 
             text={text}
             setText={setText}
-            handleSave={handleSave}
+            handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
       ) : (
