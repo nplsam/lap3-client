@@ -49,7 +49,7 @@
   
   .first-note {
     cursor: pointer;
-    background-color: #9B6A6C;
+    background-color: #E2B4BD;
     border: none;
     color: white;
     border-radius: 3px;
@@ -188,4 +188,30 @@
     border-top-right-radius: 2px;
     top: -7px;
     left: -2px;
+  }
+
+  .save-btn {
+    cursor: pointer;
+    background-color: #E2B4BD;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    height: 30px;
+    width: 50px;
+    margin-top: 10px;
+  }
+
+  .pane.editor input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .pane.editor input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
   }
