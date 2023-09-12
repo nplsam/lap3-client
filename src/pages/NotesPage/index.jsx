@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
 import { useNotes } from "../../contexts/NotesContext"
+import '../../assets/css/notes.css'
 
 const NotesPage = () => {
   const {

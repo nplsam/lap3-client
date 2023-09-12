@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 
-import './timer.css';
-import chimeSound from './chime.mp3';
+import '../../assets/css/timer.css';
+import chimeSound from '../../assets/sounds/chime.mp3';
 import { useTimer } from '../../contexts/TimerContext';
 
 const Timer = () => {

@@ -80,14 +80,14 @@ select::-webkit-scrollbar-track {
   margin-bottom: 15px;
 }
 
-.play-buttons button {
+.play-buttons buttons {
   border-radius: 50%;
   width: 20px;
   height: 20px;
   padding: 25px;
 }
 
-button {
+.buttons-container button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ button {
   font-size: 20px;
 }
 
-button:hover {
+.buttons-container button:hover {
   background-color: #d7fcbf;
   border: 0.5px inset #008000;
 }

@@ -234,3 +234,8 @@
     font-size: 16px;
     margin-left: 10px;
   }
+
+  .search-notes input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+  }
