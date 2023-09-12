@@ -190,7 +190,7 @@ async function handleSave() {
             deleteNote={deleteNoteFromAPI}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery} 
-            clearSearch={clearSearch} 
+            setSelectedNoteTitle={setSelectedNoteTitle}
             selectedNoteSubject={selectedNoteSubject}
           />
          <Editor
