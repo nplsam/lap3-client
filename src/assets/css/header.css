@@ -1,7 +1,7 @@
 header {
     background-color: #93A8AC;
     color: #424B54; 
-    padding: 16px 0; 
+    padding: 0px 0; 
   }
   
 .navbar {
@@ -30,7 +30,6 @@ header {
   }
   
   .nav-link {
-    
     color: #424B54; 
     margin-left: 20px; 
     cursor: pointer;

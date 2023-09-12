@@ -5,7 +5,7 @@ import { Sidebar, Editor } from "../../components";
 const NotesPage = () => {
   const [notes, setNotes] = useState([]);
   const [currentNoteId, setCurrentNoteId] = useState("");
-  const [tempNoteText, setTempNoteText] = useState("");
+  const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState(""); 
 
@@ -38,35 +38,24 @@ const NotesPage = () => {
 
   useEffect(() => {
     if (currentNote) {
-      setTempNoteText(currentNote.body);
+      setText(currentNote.body);
     }
   }, [currentNote]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (tempNoteText !== currentNote.body) {
-        updateNoteInAPI(tempNoteText);
+      if (text !== currentNote.body) {
+        updateNoteInAPI(text);
       }
     }, 500);
     return () => clearTimeout(timeoutId);
-  }, [tempNoteText, currentNote, updateNoteInAPI]);
-
-  async function fetchNotesFromAPI() {
-    try {
-      const response = await fetch('http://localhost:3000/api/notes');
-      if (!response.ok) {
-        throw new Error('Failed to fetch notes');
-      }
-      const data = await response.json();
-      setNotes(data);
-    } catch (error) {
-      console.error('Error fetching notes:', error);
-    }
-  }
+  }, [text, currentNote, updateNoteInAPI]);
 
 async function createNewNote() {
   const newNote = {
-    body: "# Type your page title here..",
+    title: title,
+    subject: subject,
+    body: "# New Note",
   };
 
   try {
@@ -142,7 +131,7 @@ async function handleSave() {
       body: JSON.stringify({
         title: title,
         subject: subject,
-        body: tempNoteText,
+        body: text,
       }),
     });
 
@@ -174,16 +163,16 @@ async function handleSave() {
             setTitle={setTitle}   
             subject={subject}     
             setSubject={setSubject} 
-            tempNoteText={tempNoteText}
-            setTempNoteText={setTempNoteText}
+            text={text}
+            setText={setText}
             handleSave={handleSave}
           />  
         </Split>
       ) : (
         <div className="no-notes">
-          <h1>You have no notes</h1>
+          <h1>Notes</h1>
           <button className="first-note" onClick={createNewNote}>
-            Create one now
+            New
           </button>
         </div>
       )}
