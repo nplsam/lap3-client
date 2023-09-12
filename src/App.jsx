@@ -13,6 +13,8 @@ const App = () => {
             
             <Route path="/timer" element={<Pages.TimerPage />}/>
 
+            <Route path='/planner' element={<Pages.PlannerPage />}/>
+
             <Route path="*" element={<Pages.NotFoundPage />}/>
           </Route>
       </Routes>
