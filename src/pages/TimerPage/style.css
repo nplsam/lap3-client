@@ -10,11 +10,12 @@
   font-family: 'Caveat', cursive;
   background-color: white;
   background-image: url('src/pages/TimerPage/rm422-047.jpg');
+  height: 90vh
 }
 
 h2 {
   text-align: center;
   font-size: 100px;
-  margin-bottom: 60px;
+  margin: 40px;
   font-weight: 700;
 }
