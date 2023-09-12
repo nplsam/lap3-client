@@ -20,7 +20,6 @@ const Editor = ({ text, setText, title, setTitle, subject, setSubject, handleSav
 
   return (
     <section className="pane editor">
-      <div className="input-container">
         <input
           type="text"
           placeholder="Title"
@@ -33,7 +32,6 @@ const Editor = ({ text, setText, title, setTitle, subject, setSubject, handleSav
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
-      </div>
       <button className="save-btn" onClick={handleSave}>Save</button>
       <ReactMde
         value={text}

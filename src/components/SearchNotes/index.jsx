@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SearchNotes = ({ searchQuery, setSearchQuery, clearSearch }) => {
+const SearchNotes = ({ searchQuery, setSearchQuery }) => {
   return (
-    <div className="search-bar">
+    <section className="search-notes">
       <input
         type="text"
         placeholder="Search by title"
@@ -12,8 +12,7 @@ const SearchNotes = ({ searchQuery, setSearchQuery, clearSearch }) => {
           setSearchQuery(e.target.value);
         }}
       />
-      <button onClick={clearSearch}>Clear Search</button>
-    </div>
+    </section>
   );
 };
 

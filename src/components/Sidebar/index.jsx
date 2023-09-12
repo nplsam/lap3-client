@@ -34,7 +34,7 @@ const Sidebar = (props) => {
   return (
     <section className="pane sidebar">
       <div className="sidebar--header">
-        <h3>{props.selectedNoteTitle || "Notes"}</h3>
+        <h3>{props.selectedNoteTitle || " My Notes"}</h3>
         <button className="new-note" onClick={props.newNote}>
           +
         </button>
