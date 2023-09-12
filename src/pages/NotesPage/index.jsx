@@ -16,13 +16,20 @@ const NotesPage = () => {
     subject,
     setSubject,
     selectedNoteTitle,
-    setSelectedNoteTitle 
+    setSelectedNoteTitle,
+    searchQuery,
+    setSearchQuery
     } = useNotes()
 
   const currentNote =
     notes.find((note) => note.id === currentNoteId) || notes[0];
 
-  const sortedNotes = notes.sort((a, b) => b.updatedAt - a.updatedAt);
+  const sortedNotes = 
+    notes.sort((a, b) => b.updatedAt - a.updatedAt);
+
+  const clearSearch = () => {
+    setSearchQuery("")
+  }
 
   useEffect(() => {
     async function fetchNotes() {
@@ -174,6 +181,9 @@ async function handleSave() {
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
             deleteNote={deleteNoteFromAPI}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery} 
+            clearSearch={clearSearch} 
           />
          <Editor
             title={title}       

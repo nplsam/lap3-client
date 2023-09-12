@@ -9,6 +9,7 @@ export const NotesProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
   const [selectedNoteTitle, setSelectedNoteTitle] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <NotesContext.Provider
@@ -25,6 +26,8 @@ export const NotesProvider = ({ children }) => {
         setSubject,
         selectedNoteTitle,
         setSelectedNoteTitle,
+        searchQuery,
+        setSearchQuery
       }}
     >
       {children}
