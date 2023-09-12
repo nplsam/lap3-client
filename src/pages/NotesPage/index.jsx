@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
+import { useNotes } from "../../contexts/NotesContext"
 
 const NotesPage = () => {
-  const [notes, setNotes] = useState([]);
-  const [currentNoteId, setCurrentNoteId] = useState("");
-  const [text, setText] = useState("");
-  const [title, setTitle] = useState("");
-  const [subject, setSubject] = useState(""); 
-  const [selectedNoteTitle, setSelectedNoteTitle] = useState("");
+  const {
+    notes,
+    setNotes,
+    currentNoteId,
+    setCurrentNoteId,
+    text,
+    setText,
+    title,
+    setTitle,
+    subject,
+    setSubject,
+    selectedNoteTitle,
+    setSelectedNoteTitle 
+    } = useNotes()
 
   const currentNote =
     notes.find((note) => note.id === currentNoteId) || notes[0];
