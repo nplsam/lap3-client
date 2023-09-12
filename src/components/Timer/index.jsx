@@ -5,6 +5,8 @@ import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icon
 import './timer.css';
 import chimeSound from './chime.mp3';
 import { useTimer } from '../../contexts';
+import { ToggleButton } from '../../components'
+
 
 const Timer = () => {
   const { hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage} = useTimer();
@@ -122,21 +124,21 @@ const Timer = () => {
 
         {isActive ? null :(
           <div className="dropdowns">
-            <select value={hours} onChange={handleHourChange}>
+            <select role="dropdownMenu" value={hours} onChange={handleHourChange}>
               {Array.from({ length: 24 }).map((_, index) => (
                 <option key={index} value={index}>
                   {index} hrs
                 </option>
               ))}
             </select>
-            <select value={minutes} onChange={handleMinuteChange}>
+            <select role="dropdownMenu" value={minutes} onChange={handleMinuteChange}>
               {Array.from({ length: 60 }).map((_, index) => (
                 <option key={index} value={index}>
                   {index} mins
                 </option>
               ))}
             </select>
-            <select value={seconds} onChange={handleSecondChange}>
+            <select role="dropdownMenu" value={seconds} onChange={handleSecondChange}>
               {Array.from({ length: 60 }).map((_, index) => (
                 <option key={index} value={index}>
                   {index} s
@@ -145,6 +147,7 @@ const Timer = () => {
             </select>
           </div>
         )}
+        <ToggleButton />
       </div>
     </>
   );

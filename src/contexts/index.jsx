@@ -8,9 +8,10 @@ export const TimerProvider = ({ children }) => {
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
+    const [isOn, setIsOn] = useState(false);
 
     return (
-      <TimerContext.Provider value={{ hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage}}>
+      <TimerContext.Provider value={{ hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage, isOn, setIsOn}}>
           {children}
       </TimerContext.Provider>
     );

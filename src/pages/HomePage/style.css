@@ -79,16 +79,6 @@ body {
   cursor: pointer;
 }
 
-/* css for login and register page */
-.register-container,
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
 .register-btn {
   background-color: #E2B4BD;
   overflow: hidden;
@@ -108,3 +98,17 @@ body {
   transition-duration: 0.1s;
   box-shadow: 10px 5px #93A8AC;
 }
+
+/* css for login and register page */
+.register-container,
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
