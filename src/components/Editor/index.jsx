@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ReactMde from "react-mde";
+import ReactDOM from "react-dom";
 import Showdown from "showdown";
 import '../../assets/css/notes.css'
 
-const Editor = ({ tempNoteText, setTempNoteText, title, setTitle, subject, setSubject, handleSave }) => {
+const Editor = ({ text, setText, title, setTitle, subject, setSubject, handleSave }) => {
   const [selectedTab, setSelectedTab] = useState("write");
 
   const converter = new Showdown.Converter({
@@ -14,7 +15,7 @@ const Editor = ({ tempNoteText, setTempNoteText, title, setTitle, subject, setSu
   });
 
   const handleEditorChange = (newText) => {
-    setTempNoteText(newText);
+    setText(newText);
   };
 
   return (
@@ -32,7 +33,7 @@ const Editor = ({ tempNoteText, setTempNoteText, title, setTitle, subject, setSu
         onChange={(e) => setSubject(e.target.value)}
       />
       <ReactMde
-        value={tempNoteText}
+        value={text}
         onChange={handleEditorChange}
         selectedTab={selectedTab}
         onTabChange={setSelectedTab}
@@ -42,7 +43,7 @@ const Editor = ({ tempNoteText, setTempNoteText, title, setTitle, subject, setSu
         minEditorHeight={80}
         heightUnits="vh"
       />
-      <button onClick={handleSave}>Save</button>
+      <button className="save-btn" onClick={handleSave}>Save</button>
     </section>
   );
 }
