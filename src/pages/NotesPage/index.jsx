@@ -72,7 +72,7 @@ async function createNewNote() {
   const newNote = {
     title: title,
     subject: subject,
-    body: text,
+    body: '',
   };
 
   try {
@@ -91,6 +91,7 @@ async function createNewNote() {
     const data = await response.json();
     setCurrentNoteId(data.id);
     setNotes((prevNotes) => [...prevNotes, data]);
+    setText('')
   } catch (error) {
     console.error('Error creating a new note:', error);
   }
