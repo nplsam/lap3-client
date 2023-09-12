@@ -33,4 +33,24 @@ describe('Header Component', () => {
 
         expect(homeLink).toBeInTheDocument()
     })
+
+    
+    it('displays a "Notes" link', () => {
+        const notesLink = screen.getByText('Notes')
+
+        expect(notesLink).toBeInTheDocument()
+    })
+
+    
+    it('displays a "Planner" link', () => {
+        const plannerLink = screen.getByText('Planner')
+
+        expect(plannerLink).toBeInTheDocument()
+    })
+
+    it('displays a "Timer" link', () => {
+        const timerLink = screen.getByText('Timer')
+
+        expect(timerLink).toBeInTheDocument()
+    })
 });
