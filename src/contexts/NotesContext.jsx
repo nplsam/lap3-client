@@ -9,6 +9,7 @@ export const NotesProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
   const [selectedNoteTitle, setSelectedNoteTitle] = useState("");
+  const [selectedNoteSubject, setSelectedNoteSubject] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -26,6 +27,8 @@ export const NotesProvider = ({ children }) => {
         setSubject,
         selectedNoteTitle,
         setSelectedNoteTitle,
+        selectedNoteSubject,
+        setSelectedNoteSubject,
         searchQuery,
         setSearchQuery
       }}

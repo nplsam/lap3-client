@@ -18,6 +18,8 @@ const NotesPage = () => {
     setSubject,
     selectedNoteTitle,
     setSelectedNoteTitle,
+    selectedNoteSubject,
+    setSelectedNoteSubject,
     searchQuery,
     setSearchQuery
     } = useNotes()
@@ -97,9 +99,11 @@ async function createNewNote() {
     console.error('Error creating a new note:', error);
   }
 }
-async function updateNoteInAPI(text) {
+async function updateNoteInAPI(text, newTitle, newSubject) {
     const updatedNote = {
       body: text,
+      title: newTitle,
+      subject: newSubject,
     };
   
     try {
@@ -117,7 +121,7 @@ async function updateNoteInAPI(text) {
   
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
-          note.id === currentNoteId ? { ...note, body: text } : note
+          note.id === currentNoteId ? { ...note, body: text, title: newTitle, subject: newSubject  } : note
         )
       );
     } catch (error) {
@@ -159,6 +163,7 @@ async function handleSave() {
     }
 
     setSelectedNoteTitle(title)
+    setSelectedNoteSubject(subject)
 
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
@@ -186,6 +191,7 @@ async function handleSave() {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery} 
             clearSearch={clearSearch} 
+            selectedNoteSubject={selectedNoteSubject}
           />
          <Editor
             title={title}       

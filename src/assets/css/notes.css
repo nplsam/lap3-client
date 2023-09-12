@@ -93,7 +93,7 @@
   
   .text-snippet {
     padding-inline: 5px;
-    font-size: 1rem;
+    font-size: 1.0rem;
     font-weight: 400;
     line-height: 1.2rem;
     color: #9B6A6C;
@@ -101,6 +101,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-left: 10px;
+  }
+
+  .subject-snippet {
+    font-size: 0.8rem;
+    color: #404040;
+    margin-right: 10px;
   }
   
   .selected-note {
@@ -160,6 +166,7 @@
   }
   
   .gg-trash {
+    color: #404040;
     box-sizing: border-box;
     position: relative;
     display: block;
