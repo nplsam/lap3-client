@@ -4,7 +4,7 @@ import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icon
 
 import './timer.css';
 import chimeSound from './chime.mp3';
-import { useTimer } from '../../contexts';
+import { useTimer } from '../../contexts/TimerContext';
 
 const Timer = () => {
   const { hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage} = useTimer();
