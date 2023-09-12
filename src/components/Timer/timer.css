@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&display=swap');
-
 *{
   box-sizing: border-box;
 }
@@ -9,48 +7,48 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ebfce3;
-  padding: 50px 20px;
-  border-radius: 40px;
-  width: 550px;
-  margin-bottom: 50px;
-  font-family: 'Alkatra', cursive;
-  font-family: 'Caveat', cursive;
+  background-color: #E2B4BD;
+  padding: 50px 10px;
+  border: 1px solid #3333;
+  border-radius: 20px;
+  width: 600px;
+  margin-bottom: 30px;
+  font-family: "Play", sans-serif;
 }
 
 .timer {
-  padding: 10px;
-  margin-bottom: 30px;
+  padding: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 120px;
-  color: #333;
+  color: #424B54;
 }
 
 .dropdowns {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   margin-top: 10px;
   margin-bottom: 28px;
   max-width: 80%;
 }
 
 select {
-  padding: 2px;
+  padding: 2px 0px 2px 10px;
   font-size: 20px;
-  border-radius: 20px;
-  font-family: 'Alkatra', cursive;
-  font-family: 'Caveat', cursive;
+  border-radius: 13px;
+  font-family: "Play", sans-serif;
   background-color: transparent;
-  border: 1px solid green;
-  color: green;
+  border: 1px solid #9B6A6C;
+  color: #9B6A6C;
   cursor: pointer;
 }
 
 select:hover,
 select:focus {
-  border: 0.5px inset green;
+  border: 0.5px inset #9B6A6C;
+  background-color: #eec1cae0;
 }
 
 select::-webkit-scrollbar {
@@ -58,12 +56,12 @@ select::-webkit-scrollbar {
 }
 
 select::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #80c38e;
+  border-radius: 3px;
+  background-color: #9B6A6C;
 }
 
 select::-webkit-scrollbar-track {
-  background-color: #cef0ba;
+  background-color: #E2B4BD;
 }
 
 .buttons-container {
@@ -75,7 +73,7 @@ select::-webkit-scrollbar-track {
 .buttons, 
 .play-buttons {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
@@ -86,11 +84,12 @@ select::-webkit-scrollbar-track {
   width: 20px;
   height: 20px;
   padding: 25px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  border: 1.5px solid green;
+  border: 1.5px solid #9B6A6C;
 }
 
 .buttons button {
@@ -99,30 +98,29 @@ select::-webkit-scrollbar-track {
   align-items: center;
   padding: 5px 10px;
   cursor: pointer;
-  border: 1.5px solid green;
-  border-radius: 20px;
+  border: 1.5px solid #9B6A6C;
+  border-radius: 14px;
   background-color: transparent;
-  color: green;
+  color: #9B6A6C;
   transition: background-color 0.3s ease;
   width: 100px;
-  font-family: 'Alkatra', cursive;
-  font-family: 'Caveat', cursive;
+  font-family: "Play", sans-serif;
   font-size: 20px;
 }
 
 .buttons button:hover {
-  background-color: #d7fcbf;
-  border: 0.5px inset #008000;
+  border: 0.5px inset #9B6A6C;
+  background-color: #eec1cae0;
 }
 
 .play-buttons button:hover {
-  background-color: #d7fcbf;
-  border: 0.5px inset #008000;
+  border: 0.5px inset #9B6A6C;
+  background-color: #eec1cae0;
 }
 
 .message {
   margin:0; 
   font-size: 50px;
-  color: #333;
+  color: #424B54;
 }
 

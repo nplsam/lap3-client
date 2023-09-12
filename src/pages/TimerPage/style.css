@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&display=swap');
-
-
 .timerpage {
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Alkatra', cursive;
-  font-family: 'Caveat', cursive;
-  background-color: white;
-  background-image: url('src/pages/TimerPage/rm422-047.jpg');
-  height: 90vh
+  font-family: "Play", sans-serif;
+  background-color: whitesmoke;
+  /* background-image: url('src/pages/TimerPage/rm422-047.jpg'); */
+  height: 90vh;
 }
 
 h2 {
-  text-align: center;
-  font-size: 100px;
-  margin: 40px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  font-size: 80px;
+  margin-top: 10px;
+  margin-bottom: 50px;
   font-weight: 700;
 }
