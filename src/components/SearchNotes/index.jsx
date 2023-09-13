@@ -9,7 +9,7 @@ const SearchNotes = ({ searchQuery, setSearchQuery }) => {
         value={searchQuery}
         onChange={(e) => {
           const searchTerm = e.target.value.toLowerCase();
-          setSearchQuery(e.target.value);
+          setSearchQuery(searchTerm);
         }}
       />
     </section>

@@ -7,7 +7,7 @@ const Sidebar = (props) => {
 
   useEffect(() => {
     const filtered = props.notes.filter((note) => {
-      if (props.searchQuery) {
+      if (props.searchQuery && typeof props.searchQuery.toLowerCase === 'function' && note.title) {
         return note.title.toLowerCase().includes(props.searchQuery.toLowerCase());
       }
       return true;
@@ -52,7 +52,6 @@ const noteElements = filteredNotes.map((note, index) => (
         searchQuery={props.searchQuery}
         setSearchQuery={props.setSearchQuery}
         clearSearch={() => {
-          props.clearSearch();
           setFilteredNotes([]);
         }}
       />
