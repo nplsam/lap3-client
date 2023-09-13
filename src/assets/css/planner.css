@@ -1,3 +1,8 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
 #PlannerCalendar-container {
     margin: 50px;
 }
@@ -28,6 +33,10 @@
     padding: 10px;
 }
 
+#PlannerCalendar .day-with-date {
+    background-color: #E7E6E6;
+}
+
 #PlannerCalendar .dayname {
     text-align: center;
     border-left: 1px black solid;
@@ -36,12 +45,161 @@
     padding: 10px;
     font-weight: 700;
     font-size: 20px;
+    background-color: #70AD47;
 }
 
-#PlannerCalendar .item {
+#PlannerCalendar .dayname:nth-child(7) {
+    color: rgb(194, 30, 30);
+}
+
+#PlannerCalendar .date {
+    font-weight: 700;
+}
+
+#PlannerCalendar .items-list {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    margin-top: 10px;
+    margin-top: 5px;
+    padding: 0 5px;
 }
 
+#PlannerCalendar .item {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1px 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: red;      
+    margin-top: 5px;
+}
+
+#PlannerCalendar .item div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#PlannerCalendar .item:first-child {
+    margin-top: 0;
+}
+
+
+#PlannerCalendar .items-list::-webkit-scrollbar {
+    width: 10px;
+}
+  
+#PlannerCalendar .items-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+#PlannerCalendar .items-list::-webkit-scrollbar-thumb {
+    background: #969696;
+    border-radius: 5px;
+}
+
+#PlannerCalendar .full-item-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#PlannerCalendar .full-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 500px;
+    border: 2px black solid;
+    padding: 25px;
+    background-color: white;
+    position: relative;
+}
+
+#PlannerCalendar .full-item svg {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+#PlannerCalendar .full-item p {
+    width: 100%;
+    margin-bottom: 0;
+}
+#PlannerCalendar .full-item .item-task {
+    overflow-y: auto;
+    word-wrap: break-word;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    padding-right: 5px;
+}
+
+#PlannerCalendar .full-item .item-task::-webkit-scrollbar {
+    width: 10px;
+}
+  
+#PlannerCalendar .full-item .item-task::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+#PlannerCalendar .full-item .item-task::-webkit-scrollbar-thumb {
+    background: #969696;
+    border-radius: 5px;
+}
+
+#PlannerCalendar .full-item .item-task-title {
+    font-weight: 700;
+    margin-right: auto;
+    margin-top: 16px;
+}
+
+#PlannerCalendar .full-item .item-title {
+    font-weight: 700;
+}
+
+#PlannerCalendar .full-item .item-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+}
+
+#PlannerCalendar .full-item .fake-save-button {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#PlannerCalendar .full-item form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 25px;
+}
+
+#PlannerCalendar .full-item form label {
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+#PlannerCalendar .full-item form textarea {
+    resize: none;
+    height: 100%;
+}
+
+#PlannerCalendar .full-item form button[type='submit'] {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}

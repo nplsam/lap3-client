@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import PlannerItem from '../PlannerItem'
+import PlannerList from '../PlannerList'
+import { usePlanner } from '../../contexts';
 
-const PlannerCalendar = ({ tasks, setTasks }) => {
+const PlannerCalendar = () => {
+
+    const { tasks, setTasks } = usePlanner();
 
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
@@ -61,44 +64,36 @@ const PlannerCalendar = ({ tasks, setTasks }) => {
 
     }, [currentMonth, tasks])
 
-  return (
-    <div id='PlannerCalendar-container'>
-        <div id='PlannerCalendar-controls'>
-            <button onClick={prevMonth}>Previous</button>
-            <div>{months[currentMonth]} {currentYear}</div>
-            <button onClick={nextMonth}>Next</button>
-        </div>
-        
-        <div id='PlannerCalendar'>
-            <div className='dayname'>Mon</div>
-            <div className='dayname'>Tue</div>
-            <div className='dayname'>Wed</div>
-            <div className='dayname'>Thu</div>
-            <div className='dayname'>Fri</div>
-            <div className='dayname'>Sat</div>
-            <div className='dayname'>Sun</div>
-            {currentMonthStart.map((data, index) => (
-                <div className='day' key={index}>
-                </div>
-            ))}
-            {currentMonthArr.map((tasks, index) => (
-                <div className='day' key={index}>
-                    <div>{index + 1}</div>
-                    <div className='item'>
-                        {tasks.map((task, index) => (
-                            <div className='' key={index}>{task.content}</div>
-                        ))}
+    return (
+        <div id='PlannerCalendar-container'>
+            <div id='PlannerCalendar-controls'>
+                <button onClick={prevMonth}>Previous</button>
+                <div>{months[currentMonth]} {currentYear}</div>
+                <button onClick={nextMonth}>Next</button>
+            </div>
+            
+            <div id='PlannerCalendar'>
+                {days.map((day, index) => (
+                    <div className='dayname' key={index}>{day}</div>
+                ))}
+                {currentMonthStart.map((data, index) => (
+                    <div className='day' key={index}>
                     </div>
-                </div>
-            ))}
-            {currentMonthEnd.map((data, index) => (
-                <div className='day' key={index}>
-                </div>
-            ))}
+                ))}
+                {currentMonthArr.map((tasks, index) => (
+                    <div className='day day-with-date' key={index}>
+                        <div className='date'>{index + 1}</div>
+                        <PlannerList tasks={tasks} setTasks={setTasks} />
+                    </div>
+                ))}
+                {currentMonthEnd.map((data, index) => (
+                    <div className='day' key={index}>
+                    </div>
+                ))}
+            </div>
+            
         </div>
-        
-    </div>
-  )
+    )
 }
 
 export default PlannerCalendar

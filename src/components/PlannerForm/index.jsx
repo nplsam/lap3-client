@@ -1,7 +1,10 @@
 import React from 'react'
+import { usePlanner } from '../../contexts';
 
-const PlannerForm = ({ inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, tasks, setTasks }) => {
+const PlannerForm = ({ actionPost }) => {
 
+  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, tasks, setTasks } = usePlanner()
+  
   const handleInputDate = (e) => {
     setInputDate(e.target.value);
   }
@@ -30,9 +33,10 @@ const PlannerForm = ({ inputDate, setInputDate, inputTag, setInputTag, inputCont
         <input type="date" id='date' onChange={handleInputDate} value={inputDate}/>
         <label htmlFor="tag">Enter tag:</label>
         <input type="text" id='tag' onChange={handleInputTag} value={inputTag}/>
-        <label htmlFor="content">Enter content:</label>
-        <input type="text" id='content' onChange={handleInputContent} value={inputContent}/>
-        <button type="submit" id='submit'>Add task</button>
+        <label htmlFor="content">Enter task:</label>
+        <textarea type="textarea" id='content' onChange={handleInputContent} value={inputContent}>
+        </textarea>
+        <button type="submit" id='submit'>{actionPost ? 'Add task' : 'Save'}</button>
     </form>
   )
 }
