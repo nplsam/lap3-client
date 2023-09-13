@@ -42,7 +42,6 @@ const Login = () => {
 
   return (
     <>
-      <h3>Login</h3>
       <form
         aria-label='login form'
         role="login"

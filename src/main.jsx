@@ -4,13 +4,16 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 
 import { TimerProvider } from './contexts'
+import { AuthProvider } from './contexts/auth'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <TimerProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </TimerProvider>
+    <AuthProvider>
+      <TimerProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </TimerProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

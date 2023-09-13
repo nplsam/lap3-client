@@ -9,13 +9,12 @@ const App = () => {
       <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Pages.HomePage />}/>
+
+            <Route path="/login-register" element={<Pages.LoginRegister />}/>
+
             <Route path="/notes" element={<Pages.NotesPage />}/>
             
             <Route path="/timer" element={<Pages.TimerPage />}/>
-
-            <Route path="/register" element={<Pages.RegisterPage />}/>
-
-            <Route path="/login" element={<Pages.LoginPage />}/>
 
             <Route path="*" element={<Pages.NotFoundPage />}/>
           </Route>

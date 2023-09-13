@@ -25,7 +25,7 @@ const Register = () => {
 
         setUsername('')
         setPassword('')
-        setMessage('Registration successful');
+        setMessage('Registration successful, login');
         setTimeout(() => {
           setMessage('')
         }, 3000);
@@ -42,7 +42,6 @@ const Register = () => {
   }
   return (
     <>
-      <h3>Register</h3>
       <form
         aria-label='register form'
         role="register"
@@ -67,7 +66,7 @@ const Register = () => {
           placeholder='password'
           required
         />
-
+        
         <input className='register' type="submit" value="Register" />
         {message && <p>{message}</p>}
       </form>
