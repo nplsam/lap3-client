@@ -31,7 +31,7 @@ const HomePage = () => {
               </div>
               </div>
               
-              <Link to="/" style={{ textDecoration: 'none', color: '#424B54' }}><h2>Login to get started!</h2></Link>
+              <Link to="/loginregister" style={{ textDecoration: 'none', color: '#424B54' }}><h2>Login to get started!</h2></Link>
               
             </>
           )

@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import { useTimer } from '../../contexts';
+import { useTimer } from '../../contexts/TimerContext';
 
 
 function ToggleButton() {
