@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { PlannerCalendar, PlannerForm } from '../../components'
 import '../../assets/css/planner.css'
 
