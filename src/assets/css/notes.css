@@ -29,12 +29,15 @@
   
   .sidebar--header {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 10px;
   }
   
   .sidebar--header > h3 {
     font-size: 1.75rem;
+    margin-right: 50px;
+    margin-top: 10px;
   }
   
   .new-note {
@@ -43,8 +46,9 @@
     border: none;
     color: white;
     border-radius: 3px;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
+    margin-top: -14px;
   }
   
   .first-note {
@@ -58,16 +62,23 @@
   
   .editor {
     width: 80%;
+    margin-left: 10px;
+    margin-right: 10px;
     height: 100vh;
   }
   
   .title {
     overflow: hidden;
-    width: 100%;
+    width: 95%;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(204, 204, 204, 0.3);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 8px;
   }
   
   .title--delete {
@@ -87,22 +98,31 @@
   
   .text-snippet {
     padding-inline: 5px;
-    font-size: 1rem;
+    font-size: 1.0rem;
     font-weight: 400;
     line-height: 1.2rem;
     color: #9B6A6C;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 10px;
+  }
+
+  .subject-snippet {
+    font-size: 0.8rem;
+    color: #404040;
+    margin-right: 10px;
   }
   
   .selected-note {
     background-color: #9B6A6C;
+    margin-left: 10px;
+    width: 95%;
+    border-radius: 5px;
   }
   
   .selected-note .text-snippet {
     color: white;
-    font-weight: 700;
   }
   
   .gutter {
@@ -138,6 +158,7 @@
     display: none;
     background: none;
     border: none;
+    margin-right: 20px;
   }
   
   .title:hover > .delete-btn {
@@ -149,6 +170,7 @@
   }
   
   .gg-trash {
+    color: #404040;
     box-sizing: border-box;
     position: relative;
     display: block;
@@ -198,20 +220,64 @@
     border-radius: 3px;
     height: 30px;
     width: 50px;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
 
   .pane.editor input[type="text"] {
-    width: 80%;
+    width: 40%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
     margin-top: 10px;
+    margin-right: 20px;
   }
   
   .pane.editor input[type="text"]:focus {
     outline: none;
     border-color: #007bff;
   }
+
+  .search-notes input[type="text"] {
+    width: 60%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .search-notes input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  .subject-filter input[type="text"] {
+    width: 60%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.subject-filter input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.filter-btn {
+  cursor: pointer;
+  background-color: #E2B4BD;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  height: 30px;
+  width: 50px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
