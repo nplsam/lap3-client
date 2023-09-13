@@ -7,11 +7,11 @@ export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-    return (
-      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, username, setUsername, password, setPassword }}>
-          {children}
-      </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, username, setUsername, password, setPassword }}>
+        {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => useContext(AuthContext);

@@ -11,18 +11,18 @@ const Register = () => {
   const [message, setMessage] = useState('')
 
   function handleUsername(e) {
-    setUsername(e.target.value)
+    setUsername(e.target.value.toString())
   }
 
   function handlePassword(e) {
-    setPassword(e.target.value)
+    setPassword(e.target.value.toString())
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
     if (username.length > 0 && password.length > 0) {
       try {
-        await axios.post('url', {
+        await axios.post('http://localhost:5000/auth/register', {
           username: username,
           password: password,
         });
