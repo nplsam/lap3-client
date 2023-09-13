@@ -144,39 +144,42 @@ async function updateNoteInAPI(text, newTitle, newSubject) {
     }
   }
 
-async function handleSave() {
-  try {
-    const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: title,
-        subject: subject,
-        body: text,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to update the note');
+  async function handleSave() {
+    try {
+      const updatedTitle = title.trim() === '' ? currentNote.title : title;
+      const updatedSubject = subject.trim() === '' ? currentNote.subject : subject;
+  
+      const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: updatedTitle,
+          subject: updatedSubject,
+          body: text,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update the note');
+      }
+  
+      setSelectedNoteTitle(updatedTitle);
+      setSelectedNoteSubject(updatedSubject);
+  
+      setNotes((prevNotes) =>
+        prevNotes.map((note) =>
+          note.id === currentNoteId ? { ...note, title: updatedTitle, subject: updatedSubject } : note
+        )
+      );
+  
+      setTitle('');
+      setSubject('');
+    } catch (error) {
+      console.error('Error updating the note:', error);
     }
-
-    setSelectedNoteTitle(title)
-    setSelectedNoteSubject(subject)
-
-    setNotes((prevNotes) =>
-      prevNotes.map((note) =>
-        note.id === currentNoteId ? { ...note, title: title } : note
-      )
-    );
-
-    setTitle('');
-    setSubject('');
-  } catch (error) {
-    console.error('Error updating the note:', error);
   }
-}
 
   return (
     <main>
