@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import SearchNotes from '../SearchNotes'
+import { SearchNotes, SubjectFilter } from '../../components'
 
 const Sidebar = (props) => {
 
@@ -14,6 +14,20 @@ const Sidebar = (props) => {
     });
     setFilteredNotes(filtered);
   }, [props.notes, props.searchQuery]);
+
+  const handleSubjectFilter = (subject) => {
+    // Convert the subject filter value to lowercase for case-insensitive filtering
+    const lowerCaseSubject = subject.toLowerCase();
+
+    // Filter the notes based on the subject filter
+    const filtered = props.notes.filter((note) => {
+      // Check if the note's subject (if available) contains the filter value
+      return note.subject && note.subject.toLowerCase().includes(lowerCaseSubject);
+    });
+
+    // Update the state with the filtered notes
+    setFilteredNotes(filtered);
+  };
 
 const noteElements = filteredNotes.map((note, index) => (
   <div key={note.id}>
@@ -43,7 +57,7 @@ const noteElements = filteredNotes.map((note, index) => (
   return (
     <section className="pane sidebar">
       <div className="sidebar--header">
-        <h3>{props.selectedNoteTitle || " My Notes"}</h3>
+        <h3>{props.selectedNoteTitle || "My Notes"}</h3>
         <button className="new-note" onClick={props.newNote}>
           +
         </button>
@@ -55,6 +69,7 @@ const noteElements = filteredNotes.map((note, index) => (
           setFilteredNotes([]);
         }}
       />
+      <SubjectFilter notes={props.notes} onFilter={handleSubjectFilter} />
       {noteElements}
     </section>
   );

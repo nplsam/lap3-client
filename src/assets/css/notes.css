@@ -69,11 +69,16 @@
   
   .title {
     overflow: hidden;
-    width: 100%;
+    width: 95%;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(204, 204, 204, 0.3);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 8px;
   }
   
   .title--delete {
@@ -111,14 +116,13 @@
   
   .selected-note {
     background-color: #9B6A6C;
-    margin-top: 18px;
     margin-left: 10px;
     width: 95%;
+    border-radius: 5px;
   }
   
   .selected-note .text-snippet {
     color: white;
-    font-weight: 700;
   }
   
   .gutter {
@@ -239,7 +243,7 @@
   .search-notes input[type="text"] {
     width: 60%;
     padding: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -250,3 +254,30 @@
     outline: none;
     border-color: #007bff;
   }
+
+  .subject-filter input[type="text"] {
+    width: 60%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.subject-filter input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.filter-btn {
+  cursor: pointer;
+  background-color: #E2B4BD;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  height: 30px;
+  width: 50px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

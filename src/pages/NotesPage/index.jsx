@@ -30,10 +30,6 @@ const NotesPage = () => {
   const sortedNotes = 
     notes.sort((a, b) => b.updatedAt - a.updatedAt);
 
-  const clearSearch = () => {
-    setSearchQuery("")
-  }
-
   useEffect(() => {
     async function fetchNotes() {
       try {
