@@ -9,7 +9,7 @@
   font-family: 'Alkatra', cursive;
   font-family: 'Caveat', cursive;
   background-color: white;
-  background-image: url('src/pages/TimerPage/rm422-047.jpg');
+  background-image: url('../images/timerbg.jpg');
 }
 
 h2 {

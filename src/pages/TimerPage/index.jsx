@@ -1,6 +1,6 @@
 import React from 'react';
 import { Timer } from '../../components';
-import './style.css'
+import '../../assets/css/style.css'
 
 const TimerPage = () => {
   return (

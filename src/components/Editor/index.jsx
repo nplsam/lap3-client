@@ -20,18 +20,19 @@ const Editor = ({ text, setText, title, setTitle, subject, setSubject, handleSav
 
   return (
     <section className="pane editor">
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Subject"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+        />
+      <button className="save-btn" onClick={handleSave}>Save</button>
       <ReactMde
         value={text}
         onChange={handleEditorChange}
@@ -43,7 +44,6 @@ const Editor = ({ text, setText, title, setTitle, subject, setSubject, handleSav
         minEditorHeight={80}
         heightUnits="vh"
       />
-      <button className="save-btn" onClick={handleSave}>Save</button>
     </section>
   );
 }
