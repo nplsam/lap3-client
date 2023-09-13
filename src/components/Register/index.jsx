@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+import { useAuth } from '../../contexts/auth'
+
 const Register = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+
+  const { isLoggedIn, setIsLoggedIn, username, setUsername, password, setPassword } = useAuth()
   const [message, setMessage] = useState('')
 
   function handleUsername(e) {

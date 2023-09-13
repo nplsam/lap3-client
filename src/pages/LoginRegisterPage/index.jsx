@@ -1,19 +1,16 @@
 import React, { useState }from 'react'
-import { Link } from 'react-router-dom'
-import '../HomePage/style.css'
+import './style.css'
 import { Register, Login } from '../../components'
 import { useAuth } from '../../contexts/auth'
 
 const LoginRegister = () => {
-    const [activeTab, setActiveTab] = useState('register');
+    const [activeTab, setActiveTab] = useState('login');
 
     const handleTabChange = (tab) => {
       setActiveTab(tab);
     };
   return (
     <>
-        <h1 className="welcome">Welcome to study buddy</h1>
-
         <div className="form-container">
           <div className="tabs">
             <button
@@ -40,7 +37,8 @@ const LoginRegister = () => {
             </div>
           )}
         </div>
-      </>
+
+    </>
   )
 }
 

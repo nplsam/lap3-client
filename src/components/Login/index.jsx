@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
+import { useAuth } from '../../contexts/auth'
+
 
 const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+
+  const { isLoggedIn, setIsLoggedIn, username, setUsername, password, setPassword } = useAuth()
   const [message, setMessage] = useState('')
 
   function handleUsername(e) {
@@ -24,18 +30,21 @@ const Login = () => {
 
         setUsername('')
         setPassword('')
-        setMessage('Login successful');
-        setTimeout(() => {
-          setMessage('')
-        }, 3000);
+        setIsLoggedIn(true)
+        navigate('/home')
+
+        // setMessage('Login successful');
+        // setTimeout(() => {
+        //   setMessage('')
+        // }, 3000);
 
       } catch (err) {
         setUsername('')
         setPassword('')
-        setMessage('Login failed');
+        setMessage('Incorrect credentials.');
         setTimeout(() => {
           setMessage('')
-        }, 3000);
+        }, 2000);
       }
     }
   }
