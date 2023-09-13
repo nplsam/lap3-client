@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import '../../assets/css/header.css'
-import { useAuth } from '../../contexts/auth';
+import { useAuth } from '../../contexts/AuthContext';
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none'});
 
 const Header = () => {
