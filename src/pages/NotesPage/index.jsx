@@ -33,7 +33,7 @@ const NotesPage = () => {
   useEffect(() => {
     async function fetchNotes() {
       try {
-        const response = await fetch('http://localhost:3000/api/notes');
+        const response = await fetch('http://localhost:5000/notes/user/:username');
         if (!response.ok) {
           throw new Error('Failed to fetch notes');
         }
@@ -68,17 +68,19 @@ const NotesPage = () => {
   }, [text, currentNote, updateNoteInAPI]);
 
 async function createNewNote() {
+
   const newNote = {
     title: title,
     subject: subject,
-    body: '',
+    content: '',
   };
 
   try {
-    const response = await fetch('http://localhost:3000/api/notes', {
+    const response = await fetch('http://localhost:5000/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': localStorage.token
       },
       body: JSON.stringify(newNote),
     });
@@ -95,18 +97,18 @@ async function createNewNote() {
     console.error('Error creating a new note:', error);
   }
 }
-async function updateNoteInAPI(text, newTitle, newSubject) {
+
+async function updateNoteInAPI(text) {
     const updatedNote = {
-      body: text,
-      title: newTitle,
-      subject: newSubject,
+      content: text,
     };
   
     try {
-      const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
+      const response = await fetch(`http://localhost:5000/notes/${currentNoteId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': localStorage.token
         },
         body: JSON.stringify(updatedNote),
       });
@@ -117,7 +119,7 @@ async function updateNoteInAPI(text, newTitle, newSubject) {
   
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
-          note.id === currentNoteId ? { ...note, body: text, title: newTitle, subject: newSubject  } : note
+          note.id === currentNoteId ? { ...note, content: text } : note
         )
       );
     } catch (error) {
@@ -125,10 +127,13 @@ async function updateNoteInAPI(text, newTitle, newSubject) {
     }
   }
 
-  async function deleteNoteFromAPI(noteId) {
+  async function deleteNote(noteId) {
     try {
-      const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
+      const response = await fetch(`http://localhost:5000/notes/${noteId}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': localStorage.token
+        },
       });
   
       if (!response.ok) {
@@ -145,15 +150,16 @@ async function updateNoteInAPI(text, newTitle, newSubject) {
       const updatedTitle = title.trim() === '' ? currentNote.title : title;
       const updatedSubject = subject.trim() === '' ? currentNote.subject : subject;
   
-      const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
+      const response = await fetch(`http://localhost:5000/notes/${currentNoteId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': localStorage.token
         },
         body: JSON.stringify({
           title: updatedTitle,
           subject: updatedSubject,
-          body: text,
+          content: text,
         }),
       });
   
@@ -186,7 +192,7 @@ async function updateNoteInAPI(text, newTitle, newSubject) {
             currentNote={currentNote}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
-            deleteNote={deleteNoteFromAPI}
+            deleteNote={deleteNote}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery} 
             setSelectedNoteTitle={setSelectedNoteTitle}
