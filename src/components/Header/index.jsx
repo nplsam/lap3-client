@@ -68,8 +68,8 @@ const Header = () => {
 
             {isLoggedIn ? (
               <li className="nav-container">
-                <button role="logout" className="logout-btn circle-overlay" onClick={handleLogout}>
-                  Logout
+                <button role="logout" className="logout-btn" onClick={handleLogout}>
+                  <span className="nav-text">Logout</span>
                   <span className="circle-overlay"></span>
                 </button>
               </li>
