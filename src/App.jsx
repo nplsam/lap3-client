@@ -17,6 +17,8 @@ const App = () => {
               <Route index element={<Pages.TimerPage />}/>
             </Route>
 
+            <Route path='/planner' element={<Pages.PlannerPage />}/>
+
             <Route path="*" element={<Pages.NotFoundPage />}/>
           </Route>
 

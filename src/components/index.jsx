@@ -7,5 +7,5 @@ export { default as Register } from './Register'
 export { default as Login } from './Login'
 export { default as SearchNotes } from './SearchNotes'
 export { default as SubjectFilter } from './SubjectFilter'
-
-
+export { default as PlannerForm } from './PlannerForm'
+export { default as PlannerCalendar } from './PlannerCalendar'
