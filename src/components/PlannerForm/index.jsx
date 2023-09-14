@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePlanner } from '../../contexts';
+import { usePlanner } from '../../contexts/PlannerContext';
 
 const PlannerForm = ({ actionPost, currentTask }) => {
 

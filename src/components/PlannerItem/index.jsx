@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import PlannerForm from '../PlannerForm';
-import { usePlanner } from '../../contexts';
+import { usePlanner } from '../../contexts/PlannerContext';
 
 const PlannerItem = ({ task }) => {
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PlannerList from '../PlannerList'
-import { usePlanner } from '../../contexts';
+import { usePlanner } from '../../contexts/PlannerContext'
 
 const PlannerCalendar = () => {
 
