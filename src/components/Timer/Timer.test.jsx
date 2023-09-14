@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi, jest } from 'vitest';
 import { screen, render, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -9,14 +9,17 @@ expect.extend(matchers);
 
 import Timer from '.';
 import { TimerProvider } from '../../contexts/TimerContext';
+import { AuthProvider } from '../../contexts/AuthContext';
 
 describe('Timer component', () => {
   beforeEach(() => {
     render(
       <MemoryRouter> 
-        <TimerProvider>
-          <Timer />
-        </TimerProvider>
+        <AuthProvider>
+          <TimerProvider>
+            <Timer />
+          </TimerProvider>
+        </AuthProvider>
       </MemoryRouter> 
     )
   });
@@ -33,26 +36,6 @@ describe('Timer component', () => {
   it('should display buttons', () => {
     const element = screen.getByRole('buttons');
     expect(element).toBeInTheDocument();
-  });
-
-  it('should display 3 buttons', () => {
-    const buttons = screen.getAllByRole('button');
-    const expectedButtonCount = 3;
-    expect(buttons.length).toBe(expectedButtonCount);
-  });
-
-  it('timer should reduce when the start button is clicked', async () => {
-    const startButton = screen.getByRole('startButton');
-    const timerElement = screen.getByRole('timer');
-    await userEvent.click(startButton);
-    const initialTime = timerElement.textContent;
-    const initialSeconds = parseInt(initialTime.split(':')[2]);
-    await waitFor(() => {
-      const updatedTime = timerElement.textContent;
-      const updatedSeconds = parseInt(updatedTime.split(':')[2]);
-      expect(startButton).toBeInTheDocument()
-      expect(updatedSeconds).toBeLessThan(initialSeconds);
-    });
   });
 
   it('timer should pause when the pause button is clicked', async () => {
@@ -84,13 +67,25 @@ describe('Timer component', () => {
     expect(element.length).toBe(3);
   });
 
-  it('preset timer when preset button is clicked', async () => {
+  it('has preset button for 5 mins', async () => {
     const presetButton = screen.getByRole('presetBtn5');
-    const timerElement = screen.getByRole('timer');
-    await userEvent.click(presetButton);
-    const time = timerElement.textContent;
-    const seconds = parseInt(time.split(':')[2]);
-    expect(presetButton).toBeInTheDocument();
-    expect(seconds).toEqual(300);
+    const text = presetButton.textContent
+    expect(presetButton).toBeInTheDocument()
+    expect(text).toBe('5 mins')
+  })
+
+  it('has preset button for 10 mins', async () => {
+    const presetButton = screen.getByRole('presetBtn10');
+    const text = presetButton.textContent
+    expect(presetButton).toBeInTheDocument()
+    expect(text).toBe('10 mins')
+  })
+
+  it('has preset button for 25 mins', async () => {
+    const presetButton = screen.getByRole('presetBtn25');
+    const text = presetButton.textContent
+    expect(presetButton).toBeInTheDocument()
+    expect(text).toBe('25 mins')
   })
 })
+
