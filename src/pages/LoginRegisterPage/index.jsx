@@ -11,33 +11,32 @@ const LoginRegister = () => {
     };
   return (
     <>
-        <div className="form-container">
-          <div className="tabs">
-            <button
-              className={`tab ${activeTab === 'register' ? 'active' : ''}`}
-              onClick={() => handleTabChange('register')}
-            >
-              Register
-            </button>
-            <button
-              className={`tab ${activeTab === 'login' ? 'active' : ''}`}
-              onClick={() => handleTabChange('login')}
-            >
-              Login
-            </button>
-          </div>
-
-          {activeTab === 'register' ? (
-            <div className="register-container">
-              <Register />
-            </div>
-          ) : (
-            <div className="login-container">
-              <Login />
-            </div>
-          )}
+      <div className="form-container">
+        <div className="tabs">
+          <button
+            className={`tab ${activeTab === 'register' ? 'active' : ''}`}
+            onClick={() => handleTabChange('register')}
+          >
+            Register
+          </button>
+          <button
+            className={`tab ${activeTab === 'login' ? 'active' : ''}`}
+            onClick={() => handleTabChange('login')}
+          >
+            Login
+          </button>
         </div>
 
+        {activeTab === 'register' ? (
+          <div className="register-container">
+            <Register />
+          </div>
+        ) : (
+          <div className="login-container">
+            <Login />
+          </div>
+        )}
+      </div>
     </>
   )
 }
