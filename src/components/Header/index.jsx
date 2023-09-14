@@ -8,13 +8,24 @@ const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'no
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const response = await fetch ('http://localhost:5000/auth/logout', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization':localStorage.token
+      }
+    })
+
+    if(!response.ok) {
+      throw new Error('Failed to logout')
+    }
+
     setIsLoggedIn(false);
     localStorage.removeItem('token');
     // Instead of login, I will delete username on logout (Valentin)
     setUsername('');
   };
-
   return (
     <>
       <header>
@@ -56,10 +67,12 @@ const Header = () => {
             )}
 
             {isLoggedIn ? (
-              <button role="logout" className="logout-btn" onClick={handleLogout}>
-                Logout
-                <span className="circle-overlay"></span>
-              </button>
+              <li className="nav-container">
+                <button role="logout" className="logout-btn circle-overlay" onClick={handleLogout}>
+                  Logout
+                  <span className="circle-overlay"></span>
+                </button>
+              </li>
             ) : null}
           </ul>
         </nav>
