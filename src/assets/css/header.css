@@ -22,7 +22,7 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
   }
-  
+
   .nav-links {
     color: #7a3b4e; 
     list-style: none;
@@ -44,7 +44,14 @@ header {
     display: inline-block;
   }
 
-  .nav-container a {
+  .logout-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
+
+  .logout-btn, .nav-container a {
     color: #7a3b4e;
     font-family: 'Fredoka', sans-serif;
     text-decoration: none;
@@ -66,7 +73,7 @@ header {
     position: relative;
     z-index: 2;
   }
-  
+
   .nav-container .circle-overlay::before {
     content: "";
     width: 0;
@@ -82,7 +89,6 @@ header {
     opacity: 0;
     border-radius: 5px;
   }
-  
   .nav-container:hover .circle-overlay::before {
     width: 100%;
     height: 100%;

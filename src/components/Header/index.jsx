@@ -56,7 +56,7 @@ const Header = () => {
             )}
 
             {isLoggedIn ? (
-              <button role="logout" className="logout-btn" onClick={handleLogout}>
+              <button role="logout" className="logout-btn circle-overlay" onClick={handleLogout}>
                 Logout
                 <span className="circle-overlay"></span>
               </button>
