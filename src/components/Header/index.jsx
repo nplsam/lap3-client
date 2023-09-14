@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   const handleLogout = async () => {
     const response = await fetch ('http://localhost:5000/auth/logout', {
