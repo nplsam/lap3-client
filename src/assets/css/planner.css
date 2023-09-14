@@ -151,7 +151,7 @@ button#addNewTask-button {
     flex-direction: column;
     overflow-y: auto;
     margin-top: 5px;
-    padding: 0 5px;
+    padding: 0 5px 5px;
 }
 #PlannerCalendar .item {
     border: 1px solid black;
@@ -243,6 +243,7 @@ button#addNewTask-button {
     margin-top: 5px;
     margin-bottom: 25px;
     padding-right: 5px;
+    line-height: initial;
 }
 #PlannerCalendar .full-item .item-task-title {
     font-weight: 700;
@@ -316,4 +317,9 @@ button#addNewTask-button {
 #planner textarea::-webkit-scrollbar-thumb {
     background: #969696;
     border-radius: 5px;
+}
+
+#planner .planner-message {
+    text-align: center;
+    font-size: 14px;
 }

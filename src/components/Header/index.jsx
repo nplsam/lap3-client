@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import '../../assets/css/header.css';
 import { useAuth } from '../../contexts/AuthContext';
-import axios from 'axios';
 
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   const handleLogout = async () => {
     const response = await fetch ('http://localhost:5000/auth/logout', {
@@ -23,14 +22,8 @@ const Header = () => {
     }
 
     localStorage.removeItem('token');
-    // Instead of login, I will delete username on logout (Valentin)
-    setUsername('');
     setIsLoggedIn(false)
   };
-
-  useEffect(() => {
-    setIsLoggedIn(localStorage.token ? true : false)
-  }, [isLoggedIn])
 
   return (
     <>
