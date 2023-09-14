@@ -6,14 +6,14 @@ import { useAuth } from '../../contexts/AuthContext';
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   const handleLogout = async () => {
     const response = await fetch ('http://localhost:5000/auth/logout', {
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
-        'Authorization':localStorage.token
+        'Authorization': localStorage.token
       }
     })
 
@@ -21,11 +21,10 @@ const Header = () => {
       throw new Error('Failed to logout')
     }
 
-    setIsLoggedIn(false);
     localStorage.removeItem('token');
-    // Instead of login, I will delete username on logout (Valentin)
-    setUsername('');
+    setIsLoggedIn(false)
   };
+
   return (
     <>
       <header>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
 import { useNotes } from "../../contexts/NotesContext"
+import { useAuth } from '../../contexts/AuthContext';
 import '../../assets/css/notes.css'
 
 const NotesPage = () => {
@@ -24,6 +25,8 @@ const NotesPage = () => {
     setSearchQuery
     } = useNotes()
 
+  const { username } = useAuth()
+
   const currentNote =
     notes.find((note) => note.id === currentNoteId) || notes[0];
 
@@ -33,7 +36,7 @@ const NotesPage = () => {
   useEffect(() => {
     async function fetchNotes() {
       try {
-        const response = await fetch('http://localhost:5000/notes/user/:username');
+        const response = await fetch(`http://localhost:5000/notes/user/${username}`);
         if (!response.ok) {
           throw new Error('Failed to fetch notes');
         }
@@ -69,12 +72,6 @@ const NotesPage = () => {
 
 async function createNewNote() {
 
-  const newNote = {
-    title: title,
-    subject: subject,
-    content: '',
-  };
-
   try {
     const response = await fetch('http://localhost:5000/notes', {
       method: 'POST',
@@ -82,7 +79,7 @@ async function createNewNote() {
         'Content-Type': 'application/json',
         'Authorization': localStorage.token
       },
-      body: JSON.stringify(newNote),
+      body: JSON.stringify({title: title, subject: subject, topic_tags: '', content: ''}),
     });
 
     if (!response.ok) {
@@ -90,7 +87,7 @@ async function createNewNote() {
     }
 
     const data = await response.json();
-    setCurrentNoteId(data.id);
+    setCurrentNoteId(data._id);
     setNotes((prevNotes) => [...prevNotes, data]);
     setText('')
   } catch (error) {
@@ -185,7 +182,6 @@ async function updateNoteInAPI(text) {
 
   return (
     <main>
-      {notes.length > 0 ? (
         <Split sizes={[30, 70]} direction="horizontal" className="split">
           <Sidebar
             notes={sortedNotes}
@@ -208,14 +204,6 @@ async function updateNoteInAPI(text) {
             handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
-      ) : (
-        <div className="no-notes">
-          <h1>Notes</h1>
-          <button className="first-note" onClick={createNewNote}>
-            New
-          </button>
-        </div>
-      )}
     </main>
   );
 };

@@ -5,7 +5,7 @@ const PlannerList = ({ data }) => {
 
     // Sort tasks by time, from earliest to latest
     const sortByTime = (x, y) => {
-        return new Date(x).getTime() - new Date(y).getTime();
+        return new Date(x.date)- new Date(y.date);
     }
     
 
