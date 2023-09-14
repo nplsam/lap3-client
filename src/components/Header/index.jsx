@@ -1,40 +1,72 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-import '../../assets/css/header.css'
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import '../../assets/css/header.css';
 import { useAuth } from '../../contexts/AuthContext';
-const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none'});
+
+const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth()
+  const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
 
   const handleLogout = () => {
-    setIsLoggedIn(false)
+    setIsLoggedIn(false);
     localStorage.removeItem('token');
-  }
+    // Instead of login, I will delete username on logout (Valentin)
+    setUsername('');
+  };
 
   return (
     <>
-        <header>
-            <nav className="navbar">
-              <div className="logo">Logo</div>
-              <div className="nav-container">
-                <ul className="nav-links">
-                  <li className="nav-link"><NavLink to="/" style={styles}>Home<span className="circle-overlay"></span></NavLink></li>
-                  <li className="nav-link"><NavLink to="/notes" style={styles}>Notes<span className="circle-overlay"></span></NavLink></li>
-                  <li className="nav-link"><NavLink to="/planner" style={styles}>Planner<span className="circle-overlay"></span></NavLink></li>
-                  <li className="nav-link"><NavLink to="/timer" style={styles}>Pomodoro Timer<span className="circle-overlay"></span></NavLink></li>
+      <header>
+        <nav className="navbar">
+          <div className="logo">Logo</div>
+          <ul className="nav-links">
+            <li className="nav-container">
+              <NavLink to="/" style={styles}>
+                <span className="nav-text">Home</span>
+                <span className="circle-overlay"></span>
+              </NavLink>
+            </li>
+            <li className="nav-container">
+              <NavLink to="/notes" style={styles}>
+                <span className="nav-text">Notes</span>
+                <span className="circle-overlay"></span>
+              </NavLink>
+            </li>
+            <li className="nav-container">
+              <NavLink to="/planner" style={styles}>
+                <span className="nav-text">Planner</span>
+                <span className="circle-overlay"></span>
+              </NavLink>
+            </li>
+            <li className="nav-container">
+              <NavLink to="/timer" style={styles}>
+                <span className="nav-text">Pomodoro Timer</span>
+                <span className="circle-overlay"></span>
+              </NavLink>
+            </li>
 
-                  {isLoggedIn? null:<li className="nav-link"><NavLink to="/loginregister" style={styles}>Login/Register<span className="circle-overlay"></span></NavLink></li>}
+            {isLoggedIn ? null : (
+              <li className="nav-container">
+                <NavLink to="/loginregister" style={styles}>
+                  <span className="nav-text">Login/Register</span>
+                  <span className="circle-overlay"></span>
+                </NavLink>
+              </li>
+            )}
 
-                  {isLoggedIn? <button role='logout' className='logout-btn' onClick={handleLogout}>Logout<span className="circle-overlay"></span></button> : null}
-                  
-                </ul>
-              </div>
-            </nav>
-        </header>
-        <Outlet />
+            {isLoggedIn ? (
+              <button role="logout" className="logout-btn" onClick={handleLogout}>
+                Logout
+                <span className="circle-overlay"></span>
+              </button>
+            ) : null}
+          </ul>
+        </nav>
+      </header>
+      <Outlet />
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

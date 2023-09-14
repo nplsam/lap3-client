@@ -9,6 +9,9 @@ const PlannerItem = ({ task }) => {
   // Import data
   const { setInputDate, setInputTag, setInputContent, setTasks } = usePlanner();
 
+  // Define form message
+  const [message, setMessage] = useState('')
+
   // Define flags
   const [showItem, setShowItem] = useState(false)
   const [showEditButtons, setshowEditButtons] = useState()
@@ -50,7 +53,7 @@ const PlannerItem = ({ task }) => {
       const response = await fetch(`http://localhost:5000/notes/${task._id}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
       });
   
@@ -60,6 +63,12 @@ const PlannerItem = ({ task }) => {
       setTasks((prevTasks) => prevTasks.filter((el) => el !== task));
     } catch (error) {
       console.error('Error deleting the task:', error);
+
+      // Display error message 
+      setMessage('Failed to delete a task. Try again.');
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
     }
   }
 
@@ -77,7 +86,7 @@ const PlannerItem = ({ task }) => {
             <FontAwesomeIcon icon={faXmark} onClick={toggleItem}/>
             {!showEditButtons && (
               <>
-              <p><span className='item-title'>Time: </span>{new Date(task.date).toLocaleTimeString('en-GB', { hour: "2-digit", minute: "2-digit" })}</p>
+                <p><span className='item-title'>Time: </span>{new Date(task.date).toLocaleTimeString('en-GB', { hour: "2-digit", minute: "2-digit" })}</p>
                 <p><span className='item-title'>Date: </span>{new Date(task.date).toLocaleDateString('en-GB', { day:"numeric", weekday:"long", month:"short", year:"numeric"})}</p>
                 <p><span className='item-title'>Tag: </span>{task.tag}</p>
                 <div className='item-task-title'>Task:</div>
@@ -86,6 +95,7 @@ const PlannerItem = ({ task }) => {
                   <button onClick={setupEditProcces}>Edit</button>
                   <button onClick={() => deleteTask(task)}>Delete</button>
                 </div>
+                {message && <p>{message}</p>}
               </>
             )}
             {showEditButtons && (

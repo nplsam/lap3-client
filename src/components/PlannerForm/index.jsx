@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { usePlanner } from '../../contexts/PlannerContext';
 
 const PlannerForm = ({ actionPost, currentTask }) => {
 
   // Import data
   const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, setTasks } = usePlanner()
+
+  // Define form message
+  const [message, setMessage] = useState('')
   
   // Handle all inputs on form
   const handleInputDate = (e) => {
@@ -41,7 +44,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
         body: JSON.stringify({date: inputDate, tag: inputTag, content: inputContent}),
       });
@@ -52,8 +55,25 @@ const PlannerForm = ({ actionPost, currentTask }) => {
   
       const data = await response.json();
       setTasks((prevTasks) => [...prevTasks, data]);
+
+      // Display success message
+      setMessage('Task created successfully!');
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
     } catch (error) {
       console.error('Error creating a new task:', error);
+
+      // Clean inputs
+      setInputDate('');
+      setInputTag('');
+      setInputContent('');
+
+      // Display error message 
+      setMessage('Failed to create a task. Try again.');
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
     }
   }
 
@@ -64,7 +84,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
         body: JSON.stringify({date: inputDate, tag: inputTag, content: inputContent}),
       });
@@ -78,8 +98,25 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         task._id === currentTask._id ? { ...task, date: inputDate, tag: inputTag, content: inputContent } : task
         )
       );
+
+      // Display success message 
+      setMessage('Task updated successfully!');
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
     } catch (error) {
       console.error('Error update a task:', error);
+
+      // Clean inputs
+      setInputDate('');
+      setInputTag('');
+      setInputContent('');
+
+      // Display error message 
+      setMessage('Failed to update a task. Try again.');
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
     }
   }
 
@@ -93,6 +130,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         <textarea type="textarea" id='content' required onChange={handleInputContent} value={inputContent}>
         </textarea>
         <button type="submit" id='submit'>{actionPost ? 'Add task' : 'Save'}</button>
+        {message && <p>{message}</p>}
     </form>
   )
 }

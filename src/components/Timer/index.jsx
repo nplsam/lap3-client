@@ -114,13 +114,13 @@ const Timer = () => {
         <div role="buttons" className="buttons-container">
           <div className="play-buttons">
           <button role="startButton" onClick={handleStartClick}>
-            <FontAwesomeIcon icon={faPlay} style={{color: "#9B6A6C"}} />
+            <FontAwesomeIcon icon={faPlay} style={{color: "#34252F"}} />
           </button>
           <button role="pauseButton"onClick={handlePauseClick}>
-            <FontAwesomeIcon icon={faPause} style={{color: "#9B6A6C"}} />
+            <FontAwesomeIcon icon={faPause} style={{color: "#34252F"}} />
           </button>
           <button role="resetButton" onClick={handleResetClick}>
-            <FontAwesomeIcon icon={faRotateRight} style={{color: "#9B6A6C"}} />  
+            <FontAwesomeIcon icon={faRotateRight} style={{color: "#34252F"}} />  
           </button>
         </div>
           
