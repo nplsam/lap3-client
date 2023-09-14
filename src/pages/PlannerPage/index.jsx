@@ -29,7 +29,10 @@ function PlannerPage() {
           'Authorization': localStorage.token
         },
       });
-      if (!response.ok) {
+      
+      if (response.status == 404) {
+        return setTasks([])
+      } else if (!response.ok) {
         throw new Error('Failed to fetch tasks');
       }
       const data = await response.json()
