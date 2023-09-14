@@ -22,8 +22,6 @@ const Header = () => {
     }
 
     localStorage.removeItem('token');
-    // Instead of login, I will delete username on logout (Valentin)
-    setUsername('');
     setIsLoggedIn(false)
   };
 
