@@ -5,11 +5,14 @@ import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icon
 import '../../assets/css/timer.css';
 import chimeSound from '../../assets/sounds/chime.mp3';
 import { useTimer } from '../../contexts/TimerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { ToggleButton } from '../../components'
 
 
 const Timer = () => {
   const { hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage} = useTimer();
+
+  const { isLoggedIn } = useAuth()
 
   useEffect(() => {
     let interval;
@@ -35,12 +38,20 @@ const Timer = () => {
         }
       }
     };
+
+    if (!isLoggedIn) {
+      setIsActive(false);
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
+      setShowMessage(false);
+    };
   
     if (isActive) {
       interval = setInterval(countDown, 1000);
       setShowMessage(false);
-    }
-  
+    };
+
     return () => {
       clearInterval(interval);
     };
@@ -103,13 +114,13 @@ const Timer = () => {
         <div role="buttons" className="buttons-container">
           <div className="play-buttons">
           <button role="startButton" onClick={handleStartClick}>
-            <FontAwesomeIcon icon={faPlay} style={{color: "#9B6A6C"}} />
+            <FontAwesomeIcon icon={faPlay} style={{color: "#7b3d53"}} />
           </button>
           <button role="pauseButton"onClick={handlePauseClick}>
-            <FontAwesomeIcon icon={faPause} style={{color: "#9B6A6C"}} />
+            <FontAwesomeIcon icon={faPause} style={{color: "#7b3d53"}} />
           </button>
           <button role="resetButton" onClick={handleResetClick}>
-            <FontAwesomeIcon icon={faRotateRight} style={{color: "#9B6A6C"}} />  
+            <FontAwesomeIcon icon={faRotateRight} style={{color: "#7b3d53"}} />  
           </button>
         </div>
           

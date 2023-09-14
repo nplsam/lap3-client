@@ -1,17 +1,29 @@
-*{
-  box-sizing: border-box;
-}
-
-body {
-  background-color: whitesmoke;
-}
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&family=Varela+Round&display=swap');
 
 .welcome {
+  color: #7b3d53;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 100px;
   margin-bottom: 13vh;
+  font-family: 'Fredoka', sans-serif;
+  text-shadow: -4px -4px 0 white, 4px -4px 0 white, -4px 4px 0 white, 4px 4px 0 white;
+}
+
+.getstarted-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.getstarted{
+  background-color: #99fff1;
+  width: fit-content;
+  padding: 10px 50px;
+  border-radius: 80px;
+  border: 5px solid #eb7194;
+  box-shadow: 0 0 1px 12px #fbffff;
+  font-size: 50px;
 }
 
 .features {
@@ -26,16 +38,27 @@ body {
 .planner,
 .notes,
 .pomodoro {
-  background-color: #E2B4BD;
-  border: 0.5px solid #3333;
-  border-radius: 15px;
-  padding: 20px;
+  background-color: #ffe7fa;
+  border: 5px solid #eb7194;
+  padding: 25px;
   text-align: center;
+  box-shadow: 0 0 1px 6px #fbffff;
+  border-radius: 10px;
   margin: 10px;
   flex: 1;
-  max-width: 300px;
+  max-width: 400px;
   font-size: 20px;
   line-height: 2rem;
+  font-family: 'Fredoka', sans-serif;
+  color: #7b3d53;
+}
+
+.planner {
+  background-color: #d1f8ff;
+}
+
+.pomodoro {
+  background-color: #cff7d5;
 }
 
 .homepage-btn-container {
@@ -49,9 +72,10 @@ body {
 .page-btn {
   width: 20vw;
   height: 20vw;
-  background-color: #FFFFFF;
-  border: 0.5px solid #3333;
-  border-radius: 20px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 1px 12px #fbffff;
+  border: 5px solid #cea3bf;
+  border-radius: 15px;
   font-size: 50px;
   cursor: pointer;
   position: relative; 
@@ -87,4 +111,6 @@ body {
   font-size: 60px;
 }
 
-
+.timer-on-other-page {
+  display: none;
+}

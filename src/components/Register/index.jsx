@@ -29,7 +29,7 @@ const Register = () => {
 
         setUsername('')
         setPassword('')
-        setMessage('Registration successful, login');
+        setMessage('Registration Successful. You can now login.');
         setTimeout(() => {
           setMessage('')
         }, 3000);
@@ -37,7 +37,7 @@ const Register = () => {
       } catch (err) {
         setUsername('')
         setPassword('')
-        setMessage('Registration failed');
+        setMessage('Registration Unsuccessful.');
         setTimeout(() => {
           setMessage('')
         }, 3000);

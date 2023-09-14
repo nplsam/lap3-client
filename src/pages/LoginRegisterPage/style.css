@@ -3,7 +3,10 @@
 }
 
 body {
-  background-color: whitesmoke;
+  background-image: url('../../assets/images/bgg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .form-container {
@@ -12,11 +15,14 @@ body {
   justify-content: center;
   align-items: center;
   margin: 200px;
+  color: #7b3d53;
 }
+
 .register-container,
 .login-container {
-  background-color: #E2B4BD;
-  padding: 10px 20px; 
+  background-color: #f0bada;
+  border-color: #eb7194;
+  padding: 10px 100px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +39,13 @@ body {
   padding: 10px;
   width: 100%;
   border: none;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  border-radius: 18px;
+}
+
+.form-container label {
+  font-size: 25px;
+  line-height: 1.8rem;
 }
 
 .login,
@@ -41,17 +53,33 @@ body {
   cursor: pointer;
 }
 
+.login:hover,
+.register:hover {
+  background-color: #fee7f9;
+}
+
+.login,
+.register {
+  border: 5px solid #cea3bf;
+  box-shadow: 0 0 1px 8px #fbffff;
+  background-color: #99fff1;
+}
+
 .tab {
   border: none;
   padding: 20px;
   width: 20vw;
-  background-color: #e4c7cc;
+  background-color: #fee7f9;
   cursor: pointer;
   font-size: 25px;
+  overflow: hidden;
+  color: #7b3d53;
 }
 
 .tab.active {
-  background-color: #E2B4BD;
+  background-color: #f0bbda;
 }
+
+
 
 
