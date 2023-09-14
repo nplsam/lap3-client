@@ -3,7 +3,9 @@
 }
 
 body {
-  background-color: #e2ffe5;
+  background-image: url('../../assets/images/bgg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .form-container {
