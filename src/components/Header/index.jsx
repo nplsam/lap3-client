@@ -10,30 +10,28 @@ const Header = () => {
   const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
 
   const handleLogout = async () => {
-    try {
-      const response = await axios.delete('http://localhost:5000/auth/logout', {
-        headers:{Authorization: localStorage.token}
-      });
-
-      if (response.status == 200) {
-        setIsLoggedIn(false);
-        localStorage.removeItem('token');
-        // Instead of login, I will delete username on logout (Valentin)
-        setUsername('');
-      } else {
-        throw new Error('Failed to logout on server side. Try again.')
+    const response = await fetch ('http://localhost:5000/auth/logout', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization':localStorage.token
       }
+    })
 
-    } catch (error) {
-      console.log('Failed to logout: ' + error)
+    if(!response.ok) {
+      throw new Error('Failed to logout')
     }
-  };
 
+    setIsLoggedIn(false);
+    localStorage.removeItem('token');
+    // Instead of login, I will delete username on logout (Valentin)
+    setUsername('');
+  };
   return (
     <>
       <header>
         <nav className="navbar">
-          <div className="logo">Logo</div>
+          <div className="logo"></div>
           <ul className="nav-links">
             <li className="nav-container">
               <NavLink to="/" style={styles}>
@@ -70,10 +68,12 @@ const Header = () => {
             )}
 
             {isLoggedIn ? (
-              <button role="logout" className="logout-btn" onClick={handleLogout}>
-                Logout
-                <span className="circle-overlay"></span>
-              </button>
+              <li className="nav-container">
+                <button role="logout" className="logout-btn" onClick={handleLogout}>
+                  <span className="nav-text">Logout</span>
+                  <span className="circle-overlay"></span>
+                </button>
+              </li>
             ) : null}
           </ul>
         </nav>

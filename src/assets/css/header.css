@@ -1,8 +1,9 @@
 header {
-    background-color: #BEC5AD;
-    color: #34252F; 
+    background-color: #f0bada;
+    color: #7a3b4e; 
     padding: 0px 0;
     border-radius: 5px;
+    font-family: 'Fredoka', sans-serif;
   }
   
 .navbar {
@@ -13,16 +14,21 @@ header {
     margin: 0 auto;
     padding: 0 20px;
   }
-  
-  .logo {
-    font-size: 16px;
-    font-weight: bold;
-    max-width: 10px;
-    max-height: 10px;
+
+  .navbar .logo {
+    width: 170px;
+    height: 90px;
+    transform: scale(0.85)
   }
   
+  .logo {
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .nav-links {
-    color: #34252F; 
+    color: #7a3b4e; 
     list-style: none;
     padding: 0;
     display: flex;
@@ -31,7 +37,7 @@ header {
   }
   
   .nav-link {
-    color: #34252F; 
+    color: #7a3b4e; 
     margin-left: 20px; 
     cursor: pointer;
     transition: color 0.3s ease;
@@ -42,33 +48,44 @@ header {
     display: inline-block;
   }
 
-  .nav-container a {
-    color: #34252F;
-    font-family: 'Varela Round', sans-serif;
+  .logout-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index:2
+  }
+
+  .logout-btn, .nav-container a {
+    color: #7a3b4e;
+    font-family: 'Fredoka', sans-serif;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
     background-color: #3b524972;
+    background-color: #d1f8ff;
     position: relative;
     z-index: 2;
     display: block;
     margin-right: 10px;
   }
 
-  .nav-container .nav-text {
+  .logout-btn, .nav-container .nav-text {
     color: #34252F;
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;
     position: relative;
     z-index: 2;
   }
-  
+
   .nav-container .circle-overlay::before {
     content: "";
     width: 0;
     height: 0;
     background-color: #519872;
+    background-color: #a6fff5; 
     position: absolute;
     top: 50%;
     left: 50%;
@@ -78,7 +95,6 @@ header {
     opacity: 0;
     border-radius: 5px;
   }
-  
   .nav-container:hover .circle-overlay::before {
     width: 100%;
     height: 100%;
