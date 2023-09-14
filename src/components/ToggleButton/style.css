@@ -21,7 +21,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #bbfac5;
+  background-color: #e1ffe5;
   transition: 0.4s;
   border-radius: 34px;
   border: 4px solid #cea3bf;
@@ -54,7 +54,7 @@
 }
 
 .toggle-button.work .slider {
-  background-color: #99fff1;
+  background-color: #d1f8ff;
 }
 
 .toggle-button.rest .slider:before {
