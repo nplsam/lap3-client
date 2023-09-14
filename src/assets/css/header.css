@@ -53,6 +53,8 @@ header {
     justify-content: center;
     align-items: center;
     border: none;
+    cursor: pointer;
+
   }
 
   .logout-btn, .nav-container a {
@@ -70,7 +72,7 @@ header {
     margin-right: 10px;
   }
 
-  .nav-container .nav-text {
+  .logout-btn, .nav-container .nav-text {
     color: #34252F;
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;

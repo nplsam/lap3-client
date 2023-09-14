@@ -26,9 +26,12 @@ const Login = () => {
           username: username,
           password: password,
         });
+
   
         if (response.data.response.token) {
           localStorage.setItem('token', response.data.response.token);
+          console.log(response.data.response.token)
+          
           setIsLoggedIn(true);
           // I need username to be saved on client side for request (Valentin)
           // setUsername('');

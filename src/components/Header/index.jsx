@@ -14,7 +14,6 @@ const Header = () => {
     // Instead of login, I will delete username on logout (Valentin)
     setUsername('');
   };
-
   return (
     <>
       <header>
@@ -56,10 +55,12 @@ const Header = () => {
             )}
 
             {isLoggedIn ? (
-              <button role="logout" className="logout-btn circle-overlay" onClick={handleLogout}>
-                Logout
-                <span className="circle-overlay"></span>
-              </button>
+              <li className="nav-container">
+                <button role="logout" className="logout-btn circle-overlay" onClick={handleLogout}>
+                  Logout
+                  <span className="circle-overlay"></span>
+                </button>
+              </li>
             ) : null}
           </ul>
         </nav>
