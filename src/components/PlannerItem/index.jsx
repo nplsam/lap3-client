@@ -63,12 +63,12 @@ const PlannerItem = ({ task }) => {
       setTasks((prevTasks) => prevTasks.filter((el) => el !== task));
     } catch (error) {
       console.error('Error deleting the task:', error);
-      
+
       // Display error message 
       setMessage('Failed to delete a task. Try again.');
       setTimeout(() => {
         setMessage('');
-      }, 2000);
+      }, 3000);
     }
   }
 

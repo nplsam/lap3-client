@@ -60,7 +60,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       setMessage('Task created successfully!');
       setTimeout(() => {
         setMessage('');
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error('Error creating a new task:', error);
 
@@ -73,7 +73,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       setMessage('Failed to create a task. Try again.');
       setTimeout(() => {
         setMessage('');
-      }, 2000);
+      }, 3000);
     }
   }
 
@@ -103,7 +103,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       setMessage('Task updated successfully!');
       setTimeout(() => {
         setMessage('');
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error('Error update a task:', error);
 
@@ -116,7 +116,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       setMessage('Failed to update a task. Try again.');
       setTimeout(() => {
         setMessage('');
-      }, 2000);
+      }, 3000);
     }
   }
 
