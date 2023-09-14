@@ -1,27 +1,34 @@
 header {
-    background-color: #93A8AC;
-    color: #424B54; 
-    padding: 0px 0; 
+    background-color: #f0bada;
+    color: #7a3b4e; 
+    padding: 0px 0;
+    border-radius: 5px;
+    font-family: 'Fredoka', sans-serif;
   }
   
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
   }
-  
-  .logo {
-    font-size: 16px;
-    font-weight: bold;
-    max-width: 10px;
-    max-height: 10px;
+
+  .navbar .logo {
+    width: 170px;
+    height: 90px;
+    transform: scale(0.85)
   }
   
+  .logo {
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .nav-links {
-    color: #424B54; 
+    color: #7a3b4e; 
     list-style: none;
     padding: 0;
     display: flex;
@@ -30,25 +37,66 @@ header {
   }
   
   .nav-link {
-    color: #424B54; 
+    color: #7a3b4e; 
     margin-left: 20px; 
     cursor: pointer;
     transition: color 0.3s ease;
   }
 
-  nav a {
-    list-style: none;
-    padding: 0;
+  .nav-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .logout-btn {
     display: flex;
-    justify-content: flex-end; 
-    flex: 1;
-    color: #424B54;
-    font-family: 'Play', sans-serif;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index:2
+  }
+
+  .logout-btn, .nav-container a {
+    color: #7a3b4e;
+    font-family: 'Fredoka', sans-serif;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
+    font-weight: bold;
+    background-color: #3b524972;
+    background-color: #d1f8ff;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin-right: 10px;
   }
 
-  nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  .logout-btn, .nav-container .nav-text {
+    color: #34252F;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav-container .circle-overlay::before {
+    content: "";
+    width: 0;
+    height: 0;
+    background-color: #519872;
+    background-color: #a6fff5; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    z-index: 1;
+    opacity: 0;
+    border-radius: 5px;
+  }
+  .nav-container:hover .circle-overlay::before {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
   }
