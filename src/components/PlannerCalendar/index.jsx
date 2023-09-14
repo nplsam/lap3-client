@@ -65,7 +65,6 @@ const PlannerCalendar = () => {
         // Update monthArr and if this month has task from tasks array, insert them into corresponding date array (index equal to the date)
         tasks.forEach(task => {
             const taskDate = new Date(task.date)
-            console.log(task)
             const taskIndex = taskDate.getDate() - 1
 
             if(taskDate.getFullYear() === currentYear && taskDate.getMonth() === currentMonth) {

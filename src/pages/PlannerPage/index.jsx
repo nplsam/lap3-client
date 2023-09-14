@@ -29,15 +29,13 @@ function PlannerPage() {
           'Authorization': localStorage.token
         },
       });
-      console.log(response.status)
-      if (response.status == 404) {
-        console.log('run')
-        return setTasks([])
-      } else if (!response.ok) {
+
+      if (!response.ok) {
         throw new Error('Failed to fetch tasks');
       }
+      
       const data = await response.json()
-      setTasks(data)
+      setTasks(data.tasks)
     } catch (error) {
       console.error('Error fetching notes:', error)
     }

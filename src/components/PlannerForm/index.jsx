@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { usePlanner } from '../../contexts/PlannerContext';
+import { useAuth } from '../../contexts/AuthContext';
 
-const PlannerForm = ({ actionPost, currentTask }) => {
+const PlannerForm = ({ actionPost, currentTask, showEditButtons, setshowEditButtons }) => {
 
   // Import data
-  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, setTasks } = usePlanner()
+  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, tasks, setTasks } = usePlanner()
+  const { username } = useAuth()
 
   // Define form message
   const [message, setMessage] = useState('')
@@ -46,7 +48,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
           'Content-Type': 'application/json',
           'Authorization': localStorage.token
         },
-        body: JSON.stringify({date: inputDate, tag: inputTag, content: inputContent}),
+        body: JSON.stringify({username: username, date: inputDate, tag: inputTag, content: inputContent}),
       });
   
       if (!response.ok) {
@@ -54,8 +56,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       }
   
       const data = await response.json();
-      setTasks((prevTasks) => [...prevTasks, data]);
-
+      setTasks((prevTasks) => [...prevTasks, data.respond]);
       // Display success message
       setMessage('Task created successfully!');
       setTimeout(() => {
@@ -102,8 +103,12 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       // Display success message 
       setMessage('Task updated successfully!');
       setTimeout(() => {
+        // Clean message
         setMessage('');
-      }, 3000);
+        // Change buttons
+        setshowEditButtons(!showEditButtons)
+      }, 2000);
+
     } catch (error) {
       console.error('Error update a task:', error);
 
@@ -129,8 +134,8 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         <label htmlFor="content">Enter task:</label>
         <textarea type="textarea" id='content' required onChange={handleInputContent} value={inputContent}>
         </textarea>
+        {message && <p className='planner-message'>{message}</p>}
         <button type="submit" id='submit'>{actionPost ? 'Add task' : 'Save'}</button>
-        {message && <p>{message}</p>}
     </form>
   )
 }

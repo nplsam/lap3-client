@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import '../../assets/css/header.css';
 import { useAuth } from '../../contexts/AuthContext';
-import axios from 'axios';
 
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
@@ -27,10 +26,6 @@ const Header = () => {
     setUsername('');
     setIsLoggedIn(false)
   };
-
-  useEffect(() => {
-    setIsLoggedIn(localStorage.token ? true : false)
-  }, [isLoggedIn])
 
   return (
     <>
