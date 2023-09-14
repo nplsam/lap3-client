@@ -17,17 +17,19 @@ const Header = () => {
         <header>
             <nav className="navbar">
               <div className="logo">Logo</div>
-              <ul className="nav-links">
-                 <li className="nav-link"><NavLink to="/" style={styles}>Home</NavLink></li>
-                <li className="nav-link"><NavLink to="/notes" style={styles}>Notes</NavLink></li>
-                <li className="nav-link"><NavLink to="/planner" style={styles}>Planner</NavLink></li>
-                <li className="nav-link"><NavLink to="/timer" style={styles}>Pomodoro Timer</NavLink></li>
+              <div className="nav-container">
+                <ul className="nav-links">
+                  <li className="nav-link"><NavLink to="/" style={styles}>Home<span className="circle-overlay"></span></NavLink></li>
+                  <li className="nav-link"><NavLink to="/notes" style={styles}>Notes<span className="circle-overlay"></span></NavLink></li>
+                  <li className="nav-link"><NavLink to="/planner" style={styles}>Planner<span className="circle-overlay"></span></NavLink></li>
+                  <li className="nav-link"><NavLink to="/timer" style={styles}>Pomodoro Timer<span className="circle-overlay"></span></NavLink></li>
 
-                {isLoggedIn? null:<li className="nav-link"><NavLink to="/loginregister" style={styles}>Login/Register</NavLink></li>}
+                  {isLoggedIn? null:<li className="nav-link"><NavLink to="/loginregister" style={styles}>Login/Register<span className="circle-overlay"></span></NavLink></li>}
 
-                {isLoggedIn? <button role='logout' className='logout-btn' onClick={handleLogout}>Logout</button> : null}
-                
-              </ul>
+                  {isLoggedIn? <button role='logout' className='logout-btn' onClick={handleLogout}>Logout<span className="circle-overlay"></span></button> : null}
+                  
+                </ul>
+              </div>
             </nav>
         </header>
         <Outlet />

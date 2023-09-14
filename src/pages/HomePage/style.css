@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&family=Varela+Round&display=swap');
 
-*{
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #A4B494;
-}
-
 .welcome {
-  color: #34252F;
+  color: #3B5249;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +51,7 @@ body {
   background-color: #FFFFFF;
   /* border: 0.5px solid #3333; */
   border:none;
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: 50px;
   cursor: pointer;
   position: relative; 

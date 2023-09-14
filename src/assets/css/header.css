@@ -1,14 +1,15 @@
 header {
-    background-color: #93A8AC;
-    color: #424B54; 
-    padding: 0px 0; 
+    background-color: #BEC5AD;
+    color: #34252F; 
+    padding: 0px 0;
+    border-radius: 5px;
   }
   
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
   }
@@ -21,7 +22,7 @@ header {
   }
   
   .nav-links {
-    color: #424B54; 
+    color: #34252F; 
     list-style: none;
     padding: 0;
     display: flex;
@@ -30,39 +31,52 @@ header {
   }
   
   .nav-link {
-    color: #424B54; 
+    color: #34252F; 
     margin-left: 20px; 
     cursor: pointer;
     transition: color 0.3s ease;
   }
 
-  nav a {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end; 
-    flex: 1;
-    color: #424B54;
-    font-family: 'Play', sans-serif;
+  .nav-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .nav-container a {
+    color: #34252F;
+    font-family: 'Varela Round', sans-serif;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
+    font-weight: bold;
+    background-color: #3b52491a;
+    position: relative;
+    z-index: 2;
+    display: block;
   }
-
-  nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .logout-btn {
-    color: #424B54;
-    background-color: #a2b1b4;
+  
+  .circle-overlay {
+    width: 0;
+    height: 0;
+    background-color: #519872; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    z-index: -1;
+    opacity: 0;
     border-radius: 5px;
-    border: none;
-    margin-left: 20px;
-    cursor: pointer;
-    padding: 10px 20px;
   }
-
-  .logout-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  
+  .nav-container:hover .circle-overlay {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+  
+  .nav-container:not(:hover) .circle-overlay {
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
