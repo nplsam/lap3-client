@@ -16,7 +16,7 @@ function PlannerPage() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/planners/user/:username', {
+      const response = await fetch('http://localhost:5000/planners', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.token}`
