@@ -6,8 +6,8 @@
 .toggle-button {
   display: inline-block;
   position: relative;
-  width: 69px; 
-  height: 31px;
+  width: 70px; 
+  height: 33px;
 }
 
 .toggle-button input[type="checkbox"] {
@@ -21,20 +21,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #519872;
+  background-color: #bbfac5;
   transition: 0.4s;
   border-radius: 34px;
-  border: inset 1px #3B5249;
+  border: 4px solid #cea3bf;
+  box-shadow: 0 0 1px 5px #fbffff;
 }
 
 .slider:before {
   position: absolute;
   content: '';
-  height: 27px;
-  width: 27px;
-  left: 39px;
-  bottom: 1px;
-  background-color: #FFFFFF;
+  height: 25px;
+  width: 25px;
+  left: 37px;
+  bottom: 0px;
+  background-color: #fee7f9;
   transition: 0.1s;
   border-radius: 50%;
 }
@@ -49,17 +50,16 @@
   transform: translateY(-50%);
   font-size: 13px;
   font-weight: bold;
-  color: whitesmoke;
+  color: #7b3d53;
 }
 
 .toggle-button.work .slider {
-  background-color: #3B5249;
+  background-color: #99fff1;
 }
 
 .toggle-button.rest .slider:before {
-  transform: translateX(-38px);
+  transform: translateX(-37px);
 }
 .toggle-button.rest .label-text {
   left: 13px;
-  color: whitesmoke;
 }

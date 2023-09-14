@@ -60,11 +60,11 @@ select::-webkit-scrollbar {
 
 select::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background-color: #A4B494;
+  background-color: #7b3d53;
 }
 
 select::-webkit-scrollbar-track {
-  background-color: #BEC5AD;
+  background-color: #cea3bf;
 }
 
 .buttons-container {
