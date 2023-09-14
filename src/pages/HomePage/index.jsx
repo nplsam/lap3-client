@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
+import { Timer } from '../../components';
 import { useAuth } from '../../contexts/AuthContext'
 
 const HomePage = () => {
@@ -29,9 +30,9 @@ const HomePage = () => {
                 <h3>Boost Productivity with Pomodoro</h3>
                 <p>Enhance your focus and study efficiency with the Pomodoro Technique. Set timers and take productive breaks.</p>
               </div>
-              </div>
+            </div>
               
-              <Link to="/loginregister" style={{ textDecoration: 'none', color: '#424B54' }}><h2>Login to get started!</h2></Link>
+            <Link to="/loginregister" style={{ textDecoration: 'none', color: '#424B54' }}><h2>Login to get started!</h2></Link>
               
             </>
           )
@@ -59,7 +60,10 @@ const HomePage = () => {
         : null 
         } 
 
-
+        <div className="timer-on-other-page">
+          <Timer />
+        </div>
+        
       </>
   )
 }
