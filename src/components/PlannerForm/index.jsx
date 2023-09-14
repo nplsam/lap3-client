@@ -35,7 +35,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
 
   async function createNewTask() {
     try {
-      const response = await fetch('http://localhost:3000/planners', {
+      const response = await fetch('http://localhost:5000/planners', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
 
   async function updateTask() {
     try {
-      const response = await fetch(`http://localhost:3000/planners/${currentTask._id}`, {
+      const response = await fetch(`http://localhost:5000/planners/${currentTask._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

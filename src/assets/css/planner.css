@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&display=swap');
 
 /*  */
-button {
+#planner button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@ button {
     font-size: 20px;
 }
   
-button:hover {
+#planner button:hover {
     background-color: #d7fcbf;
     border: 0.5px inset #008000;
 }
@@ -320,19 +320,19 @@ body {
 }
 
 /*  */
-textarea {
+#planner textarea {
     padding-right: 5px;
 }
-textarea::-webkit-scrollbar {
+#planner textarea::-webkit-scrollbar {
     width: 10px;
 }
   
-textarea::-webkit-scrollbar-track {
+#planner textarea::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 5px;
 }
 
-textarea::-webkit-scrollbar-thumb {
+#planner textarea::-webkit-scrollbar-thumb {
     background: #969696;
     border-radius: 5px;
 }

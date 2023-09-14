@@ -16,7 +16,7 @@ function PlannerPage() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:3000/planners/user/:username', {
+      const response = await fetch('http://localhost:5000/planners/user/:username', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.token}`
@@ -39,7 +39,7 @@ function PlannerPage() {
   
 
   return (
-    <>
+    <div id='planner'>
       <button id='addNewTask-button' onClick={toggleAddForm}>Add new task</button>
       <PlannerCalendar />
       {showAddForm && (
@@ -50,7 +50,7 @@ function PlannerPage() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
