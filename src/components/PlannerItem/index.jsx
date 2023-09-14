@@ -14,6 +14,11 @@ const PlannerItem = ({task, deleteTask }) => {
   const toggleItem = () => {
     setShowItem(!showItem)
     setshowEditButtons(false)
+
+    // cleanEditForm
+    setInputDate('')
+    setInputTag('')
+    setInputContent('')
   }
 
   const setupEditProcces = () => {

@@ -1,7 +1,10 @@
 import React from 'react'
 import PlannerItem from '../PlannerItem'
+import { usePlanner } from '../../contexts';
 
-const PlannerList = ({ tasks, setTasks }) => {
+const PlannerList = ({ data }) => {
+
+    const { tasks, setTasks } = usePlanner();
 
     const deleteTask = (task) => {
         let filteredTasks = tasks.filter(el => el !== task)
@@ -10,7 +13,7 @@ const PlannerList = ({ tasks, setTasks }) => {
 
     return (
         <div className='items-list'>
-            {tasks.map((task, index) => (
+            {data.slice(1).map((task, index) => (
                 <PlannerItem key={index} task={task} deleteTask={deleteTask}/>
             ))}
         </div>

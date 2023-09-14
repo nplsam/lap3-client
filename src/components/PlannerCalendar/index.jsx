@@ -4,7 +4,7 @@ import { usePlanner } from '../../contexts';
 
 const PlannerCalendar = () => {
 
-    const { tasks, setTasks } = usePlanner();
+    const { tasks } = usePlanner();
 
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
@@ -12,7 +12,7 @@ const PlannerCalendar = () => {
     const [currentMonthStart, setCurrentMonthStart] = useState([])
     const [currentMonthEnd, setCurrentMonthEnd] = useState([])
 
-    const currentDay = new Date().getDate()
+    const currentDate = new Date()
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -34,33 +34,46 @@ const PlannerCalendar = () => {
     }
 
     useEffect(() => {
-        // Set startingDate
-        let startingDate = new Date(currentYear, currentMonth, 1).getDay() - 1
-        if (startingDate === -1) {
-            startingDate = 6
+        // Set startingDay
+        let startingDay = new Date(currentYear, currentMonth, 1).getDay() - 1
+        if (startingDay === -1) {
+            startingDay = 6
         }
-        setCurrentMonthStart(new Array(startingDate).fill(0))
+        setCurrentMonthStart(new Array(startingDay).fill(0))
 
         // Set currentMonthLength
         const monthLenght = new Date(currentYear, currentMonth + 1, 0).getDate()
         const monthArr = new Array(monthLenght).fill([])
 
+        //
+        let currentDay = startingDay
+        for (let i = 0; i < monthArr.length; i++) {
+            monthArr[i] = [...monthArr[i], currentDay]
+            currentDay === 6 ? currentDay = 0 : currentDay += 1
+        }
+
+        //
+        if (currentDate.getFullYear() === currentYear && currentDate.getMonth() === currentMonth) {
+            monthArr[currentDate.getDate() - 1][0] = -1
+        }
+
         tasks.forEach(task => {
             const taskDate = new Date(task.date)
+            const taskIndex = taskDate.getDate() - 1
 
             if(taskDate.getFullYear() === currentYear && taskDate.getMonth() === currentMonth) {
-                monthArr[taskDate.getDate() - 1] = [...monthArr[taskDate.getDate() - 1], task]
+                monthArr[taskIndex] = [...monthArr[taskIndex], task]
             }
         });
 
         setCurrentMonthArr(monthArr)
 
-        // Set endingDate
-        let endingDate = new Date(currentYear, currentMonth, monthLenght).getDay() - 1
-        if (endingDate === -1 ) {
-            endingDate = 6
+        // Set endingDay
+        let endingDay = new Date(currentYear, currentMonth, monthLenght).getDay() - 1
+        if (endingDay === -1 ) {
+            endingDay = 6
         }
-        setCurrentMonthEnd(new Array(6 - endingDate).fill(0))
+        setCurrentMonthEnd(new Array(6 - endingDay).fill(0))
 
     }, [currentMonth, tasks])
 
@@ -80,10 +93,10 @@ const PlannerCalendar = () => {
                     <div className='day' key={index}>
                     </div>
                 ))}
-                {currentMonthArr.map((tasks, index) => (
-                    <div className='day day-with-date' key={index}>
-                        <div className='date'>{index + 1}</div>
-                        <PlannerList tasks={tasks} setTasks={setTasks} />
+                {currentMonthArr.map((data, index) => (
+                    <div className={`day day-with-date ${data[0] == -1 ? 'current-date' : ''}`} key={index}>
+                        <div className={`date ${data[0] == 5 ? 'red-date' : ''}${data[0] == 6 ? 'red-date' : ''}`}>{index + 1}</div>
+                        <PlannerList data={data} />
                     </div>
                 ))}
                 {currentMonthEnd.map((data, index) => (

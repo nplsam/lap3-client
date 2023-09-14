@@ -1,8 +1,66 @@
 body {
     height: 100vh;
-    width: 100vw;
 }
 
+/*  */
+#addNewTask-button {
+    width: 300px;
+    margin: 50px auto 0;
+}
+
+#addTask-form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#addTask-form-conatiner {
+    position: relative;
+}
+
+#addTask-form svg {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+#addTask-form form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 500px;
+    border: 2px black solid;
+    padding: 25px;
+    background-color: white;
+}
+
+#addTask-form form label {
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+#addTask-form form textarea {
+    resize: none;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+#addTask-form form button {
+    align-self: center;
+    width: 100%
+}
+
+/*  */
 #PlannerCalendar-container {
     margin: 50px;
 }
@@ -48,7 +106,15 @@ body {
     background-color: #70AD47;
 }
 
-#PlannerCalendar .dayname:nth-child(7) {
+#PlannerCalendar .dayname:nth-child(7), #PlannerCalendar .dayname:nth-child(6) {
+    color: rgb(194, 30, 30);
+}
+
+#PlannerCalendar .current-date {
+    background-color: rgb(255,229,153);
+}
+
+#PlannerCalendar .red-date {
     color: rgb(194, 30, 30);
 }
 

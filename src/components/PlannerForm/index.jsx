@@ -30,11 +30,11 @@ const PlannerForm = ({ actionPost }) => {
   return (
     <form onSubmit={handleSubmit}>
         <label htmlFor="date">Enter Date:</label>
-        <input type="date" id='date' onChange={handleInputDate} value={inputDate}/>
+        <input type="date" id='date' required onChange={handleInputDate} value={inputDate}/>
         <label htmlFor="tag">Enter tag:</label>
-        <input type="text" id='tag' onChange={handleInputTag} value={inputTag}/>
+        <input type="text" id='tag' required onChange={handleInputTag} value={inputTag}/>
         <label htmlFor="content">Enter task:</label>
-        <textarea type="textarea" id='content' onChange={handleInputContent} value={inputContent}>
+        <textarea type="textarea" id='content' required onChange={handleInputContent} value={inputContent}>
         </textarea>
         <button type="submit" id='submit'>{actionPost ? 'Add task' : 'Save'}</button>
     </form>
