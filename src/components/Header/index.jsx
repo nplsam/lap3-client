@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import '../../assets/css/header.css';
 import { useAuth } from '../../contexts/AuthContext';
+import axios from 'axios';
 
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
@@ -13,7 +14,7 @@ const Header = () => {
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
-        'Authorization':localStorage.token
+        'Authorization': localStorage.token
       }
     })
 
@@ -21,11 +22,16 @@ const Header = () => {
       throw new Error('Failed to logout')
     }
 
-    setIsLoggedIn(false);
     localStorage.removeItem('token');
     // Instead of login, I will delete username on logout (Valentin)
     setUsername('');
+    setIsLoggedIn(false)
   };
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.token ? true : false)
+  }, [isLoggedIn])
+
   return (
     <>
       <header>
