@@ -17,13 +17,11 @@ const App = () => {
               <Route index element={<Pages.TimerPage />}/>
             </Route>
 
-            <Route path='/planner' element={<Pages.PlannerPage />}/>
-
+            <Route path="/planner" element={<ProtectedRoute redirectTo="/loginregister" />} >
+              <Route index element={<Pages.PlannerPage />}/>
+            </Route>
+            
             <Route path="*" element={<Pages.NotFoundPage />}/>
-          </Route>
-
-          <Route path="/timer" element={<ProtectedRoute redirectTo="/loginregister" />} >
-            <Route index element={<Pages.TimerPage />}/>
           </Route>
       </Routes>
   )

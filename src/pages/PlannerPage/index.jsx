@@ -7,16 +7,19 @@ import { usePlanner } from '../../contexts/PlannerContext';
 
 function PlannerPage() {
 
+  // Define data
   const { setTasks } = usePlanner();
   const [showAddForm, setshowAddForm] = useState()
 
+  // Toggle flag for form popup
   const toggleAddForm = () => {
     setshowAddForm(!showAddForm)
   }
 
+  // Fetch all user tasks
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:3000/planners/user/:username', {
+      const response = await fetch('http://localhost:5000/planners', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.token}`
@@ -39,7 +42,7 @@ function PlannerPage() {
   
 
   return (
-    <>
+    <div id='planner'>
       <button id='addNewTask-button' onClick={toggleAddForm}>Add new task</button>
       <PlannerCalendar />
       {showAddForm && (
@@ -50,7 +53,7 @@ function PlannerPage() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
