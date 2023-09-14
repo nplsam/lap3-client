@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #A4B494;
+  background-color: #e0ffe5;
 }
 
 .form-container {
@@ -15,7 +15,8 @@ body {
 }
 .register-container,
 .login-container {
-  background-color: #E2B4BD;
+  background-color: #f0bada;
+  border-color: #eb7194;
   padding: 10px 100px; 
   display: flex;
   justify-content: center;
@@ -48,21 +49,21 @@ body {
 
 .login:hover,
 .register:hover {
-  background-color: #f1e0e2;
+  background-color: #ffe7fa;
 }
 
 .tab {
   border: none;
   padding: 20px;
   width: 20vw;
-  background-color: #e4c7cc;
+  background-color: #ffe7fa;
   cursor: pointer;
   font-size: 25px;
   overflow: hidden;
 }
 
 .tab.active {
-  background-color: #E2B4BD;
+  background-color: #f0bada;
 }
 
 
