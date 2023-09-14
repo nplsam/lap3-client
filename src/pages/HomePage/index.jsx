@@ -32,8 +32,9 @@ const HomePage = () => {
               </div>
             </div>
               
-            <Link to="/loginregister" style={{ textDecoration: 'none', color: '#424B54' }}><h2>Login to get started!</h2></Link>
-              
+              <div className='getstarted-container'>
+              <Link to="/loginregister" style={{ textDecoration: 'none', color: '#424B54' }}><h2 className='getstarted'>Login to get started!</h2></Link>
+              </div>
             </>
           )
         }

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&family=Varela+Round&display=swap');
 
 .welcome {
-  color: #3B5249;
+  color: #7b3d53;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,21 @@
   font-family: 'Alkatra', cursive;
   font-family: 'Caveat', cursive;
   font-family: 'Varela Round', sans-serif;
+}
+
+.getstarted-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.getstarted{
+  background-color: #99fff1;
+  width: fit-content;
+  padding: 10px 50px;
+  border-radius: 80px;
+  border: 5px solid #cea3bf;
+  box-shadow: 0 0 1px 12px #fbffff;
+  font-size: 50px;
 }
 
 .features {
@@ -24,9 +39,9 @@
 .planner,
 .notes,
 .pomodoro {
-  /* background-color: whitesmoke; */
-  background-image: linear-gradient(#e7f3ca, #ebf7e6,#F5F5F5, #F5F5F5, #F5F5F5, #edf1e3, #e7f3ca);
-  /* border: 0.5px solid #3333; */
+  background-color: #fee7f9;
+  box-shadow: 0 0 1px 12px #fbffff;
+  border: 5px solid #cea3bf;
   border-radius: 15px;
   padding: 25px;
   text-align: center;
@@ -35,6 +50,7 @@
   max-width: 400px;
   font-size: 20px;
   line-height: 2rem;
+  color: #7b3d53;
 }
 
 .homepage-btn-container {
@@ -48,9 +64,9 @@
 .page-btn {
   width: 20vw;
   height: 20vw;
-  background-color: #FFFFFF;
-  /* border: 0.5px solid #3333; */
-  border:none;
+  background-color: whitesmoke;
+  box-shadow: 0 0 1px 12px #fbffff;
+  border: 5px solid #cea3bf;
   border-radius: 15px;
   font-size: 50px;
   cursor: pointer;

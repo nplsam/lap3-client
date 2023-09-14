@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #e7f3ca;
+  background-color: #e2ffe5;
 }
 
 .form-container {
@@ -67,16 +67,6 @@ body {
   background-color: #E2B4BD;
 }
 
-.tab.register {
-  border-top-left-radius: 10px; /* Adjust the value as needed */
-  border-top-right-radius: 0;
-  overflow: hidden;
-}
 
-.tab.login {
-  border-top-left-radius: 0;
-  border-top-right-radius: 10px; /* Adjust the value as needed */
-  overflow: hidden;
-}
 
 

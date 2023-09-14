@@ -17,16 +17,17 @@ h2 {
   margin-top: 10px;
   margin-bottom: 5px;
   font-weight: 700;
-  color: #3B5249;
+  color: #7b3d53;
   font-family: 'Alkatra', cursive;
   font-family: 'Caveat', cursive;
   font-family: 'Varela Round', sans-serif;
 }
 
 .timerpage-container {
-  background-color: whitesmoke;
+  background-color: #fee7f9;
   padding: 5px 100px;
   border-radius: 15px;
-  /* border: 2px outset #BEC5AD; */
+  border: 5px solid #cea3bf;
+  box-shadow: 0 0 1px 12px #fbffff;
   margin-top: 10vh;
 }
