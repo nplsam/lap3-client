@@ -1,0 +1,68 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 200px;
+}
+.register-container,
+.login-container {
+  background-color: #E2B4BD;
+  padding: 10px 100px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 40vw;
+  height: 40vh;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+.register-container input,
+.login-container input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.form-container label {
+  font-size: 20px;
+  line-height: 1.8rem;
+}
+
+.login,
+.register {
+  cursor: pointer;
+}
+
+.login:hover,
+.register:hover {
+  background-color: #f1e0e2;
+}
+
+.tab {
+  border: none;
+  padding: 20px;
+  width: 20vw;
+  background-color: #e4c7cc;
+  cursor: pointer;
+  font-size: 25px;
+  overflow: hidden;
+}
+
+.tab.active {
+  background-color: #E2B4BD;
+}
+
+

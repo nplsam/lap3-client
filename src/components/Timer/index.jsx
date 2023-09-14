@@ -2,12 +2,17 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 
-import './timer.css';
-import chimeSound from './chime.mp3';
-import { useTimer } from '../../contexts';
+import '../../assets/css/timer.css';
+import chimeSound from '../../assets/sounds/chime.mp3';
+import { useTimer } from '../../contexts/TimerContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { ToggleButton } from '../../components'
+
 
 const Timer = () => {
   const { hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage} = useTimer();
+
+  const { isLoggedIn } = useAuth()
 
   useEffect(() => {
     let interval;
@@ -33,12 +38,20 @@ const Timer = () => {
         }
       }
     };
+
+    if (!isLoggedIn) {
+      setIsActive(false);
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
+      setShowMessage(false);
+    };
   
     if (isActive) {
       interval = setInterval(countDown, 1000);
       setShowMessage(false);
-    }
-  
+    };
+
     return () => {
       clearInterval(interval);
     };
@@ -101,13 +114,13 @@ const Timer = () => {
         <div role="buttons" className="buttons-container">
           <div className="play-buttons">
           <button role="startButton" onClick={handleStartClick}>
-            <FontAwesomeIcon icon={faPlay} style={{color: "green"}} />
+            <FontAwesomeIcon icon={faPlay} style={{color: "#9B6A6C"}} />
           </button>
           <button role="pauseButton"onClick={handlePauseClick}>
-            <FontAwesomeIcon icon={faPause} style={{color: "green"}} />
+            <FontAwesomeIcon icon={faPause} style={{color: "#9B6A6C"}} />
           </button>
           <button role="resetButton" onClick={handleResetClick}>
-            <FontAwesomeIcon icon={faRotateRight} style={{color: "green"}} />  
+            <FontAwesomeIcon icon={faRotateRight} style={{color: "#9B6A6C"}} />  
           </button>
         </div>
           
@@ -122,21 +135,21 @@ const Timer = () => {
 
         {isActive ? null :(
           <div className="dropdowns">
-            <select value={hours} onChange={handleHourChange}>
+            <select role="dropdownMenu" value={hours} onChange={handleHourChange}>
               {Array.from({ length: 24 }).map((_, index) => (
                 <option key={index} value={index}>
                   {index} hrs
                 </option>
               ))}
             </select>
-            <select value={minutes} onChange={handleMinuteChange}>
+            <select role="dropdownMenu" value={minutes} onChange={handleMinuteChange}>
               {Array.from({ length: 60 }).map((_, index) => (
                 <option key={index} value={index}>
                   {index} mins
                 </option>
               ))}
             </select>
-            <select value={seconds} onChange={handleSecondChange}>
+            <select role="dropdownMenu" value={seconds} onChange={handleSecondChange}>
               {Array.from({ length: 60 }).map((_, index) => (
                 <option key={index} value={index}>
                   {index} s
@@ -145,6 +158,7 @@ const Timer = () => {
             </select>
           </div>
         )}
+        <ToggleButton />
       </div>
     </>
   );
