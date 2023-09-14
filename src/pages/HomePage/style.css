@@ -22,7 +22,7 @@
   width: fit-content;
   padding: 10px 50px;
   border-radius: 80px;
-  border: 5px solid #cea3bf;
+  border: 5px solid #eb7194;
   box-shadow: 0 0 1px 12px #fbffff;
   font-size: 50px;
 }
@@ -39,7 +39,7 @@
 .planner,
 .notes,
 .pomodoro {
-  background-color: #fee7f9;
+  background-color: #f0bada;
   box-shadow: 0 0 1px 12px #fbffff;
   border: 5px solid #cea3bf;
   border-radius: 15px;
