@@ -1,8 +1,7 @@
 import React from 'react'
-import { describe, it, expect, beforeEach, afterEach, jest } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach} from 'vitest'
 import { screen, render, cleanup } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'; // with this we can specify fake history to allow us to test things
-
+import { MemoryRouter } from 'react-router-dom';
 import * as matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 
@@ -21,7 +20,7 @@ describe('Header Component', () => {
         cleanup()
     })
 
-    it('display a Header with 4 children', () => {
+    it('displays a Header with 5 children', () => {
         const nav = screen.getByRole('list')
 
         expect(nav).toBeInTheDocument()
