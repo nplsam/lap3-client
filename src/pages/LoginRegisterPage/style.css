@@ -6,6 +6,7 @@ body {
   background-image: url('../../assets/images/bgg.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .form-container {

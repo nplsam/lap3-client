@@ -7,9 +7,8 @@
   align-items: center;
   font-size: 100px;
   margin-bottom: 13vh;
-  font-family: 'Alkatra', cursive;
-  font-family: 'Caveat', cursive;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Fredoka', sans-serif;
+  text-shadow: -4px -4px 0 white, 4px -4px 0 white, -4px 4px 0 white, 4px 4px 0 white;
 }
 
 .getstarted-container{
@@ -39,18 +38,27 @@
 .planner,
 .notes,
 .pomodoro {
-  background-color: #f0bada;
-  box-shadow: 0 0 1px 12px #fbffff;
-  border: 5px solid #cea3bf;
-  border-radius: 15px;
+  background-color: #ffe7fa;
+  border: 5px solid #eb7194;
   padding: 25px;
   text-align: center;
+  box-shadow: 0 0 1px 6px #fbffff;
+  border-radius: 10px;
   margin: 10px;
   flex: 1;
   max-width: 400px;
   font-size: 20px;
   line-height: 2rem;
+  font-family: 'Fredoka', sans-serif;
   color: #7b3d53;
+}
+
+.planner {
+  background-color: #d1f8ff;
+}
+
+.pomodoro {
+  background-color: #cff7d5;
 }
 
 .homepage-btn-container {
