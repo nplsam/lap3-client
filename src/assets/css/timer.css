@@ -42,7 +42,8 @@ select {
   border-radius: 20px;
   font-family: 'Alkatra', cursive;
   font-family: 'Caveat', cursive;
-  font-family: 'Varela Round', sans-serif;  background-color: #99fff1;
+  font-family: 'Varela Round', sans-serif;  
+  background-color: #d1f8ff;
   border: 4px solid #cea3bf;
   box-shadow: 0 0 1px 6px #fbffff;
   color: #7b3d53;
@@ -91,7 +92,7 @@ select::-webkit-scrollbar-track {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #99fff1;
+  background-color: #d1f8ff;
   border: 4px solid #cea3bf;
   box-shadow: 0 0 1px 6px #fbffff;
 }
@@ -105,7 +106,7 @@ select::-webkit-scrollbar-track {
   border: 4px solid #cea3bf;
   box-shadow: 0 0 1px 6px #fbffff;
   border-radius: 20px;
-  background-color: #99fff1;
+  background-color: #d1f8ff;
   color: #7b3d53;
   transition: background-color 0.3s ease;
   width: 100px;
