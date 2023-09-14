@@ -1,26 +1,27 @@
 import React from 'react'
-import { usePlanner } from '../../contexts';
+import { usePlanner } from '../../contexts/PlannerContext';
 
 const PlannerForm = ({ actionPost, currentTask }) => {
 
+  // Import data
   const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, setTasks } = usePlanner()
   
+  // Handle all inputs on form
   const handleInputDate = (e) => {
     setInputDate(e.target.value);
   }
-
   const handleInputTag = (e) => {
     setInputTag(e.target.value);
   }
-
   const handleInputContent = (e) => {
     setInputContent(e.target.value);
   }
 
+  // Handle form submiting
   const handleSubmit = (e) => {
       e.preventDefault();
 
-      //
+      // Check what type of form it is and so create new task or update existing
       if (actionPost) {
         createNewTask();
       } else {
@@ -33,9 +34,10 @@ const PlannerForm = ({ actionPost, currentTask }) => {
       setInputContent('');
   }
 
+  // Send new task to DB and update tasks state
   async function createNewTask() {
     try {
-      const response = await fetch('http://localhost:3000/planners', {
+      const response = await fetch('http://localhost:5000/planners', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,9 +57,10 @@ const PlannerForm = ({ actionPost, currentTask }) => {
     }
   }
 
+  // Update task in DB and update tasks state
   async function updateTask() {
     try {
-      const response = await fetch(`http://localhost:3000/planners/${currentTask._id}`, {
+      const response = await fetch(`http://localhost:5000/planners/${currentTask._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
