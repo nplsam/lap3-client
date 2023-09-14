@@ -6,8 +6,10 @@ const TimerPage = () => {
   return (
     <>
       <div className="timerpage">
-        <h2>Pomodoro Timer</h2>
-        <Timer />
+        <div className='timerpage-container'>
+          <h2>Pomodoro Timer</h2>
+          <Timer />
+        </div>
       </div>
     </>
     
