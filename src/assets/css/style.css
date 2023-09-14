@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&family=Varela+Round&display=swap');
+
 .timerpage {
   display:flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
   align-items: center;
   font-family: "Play", sans-serif;
   background-color: #A4B494;
-  height: 90vh;
+  height: 92.4vh;
 }
 
 h2 {
@@ -15,7 +17,17 @@ h2 {
   text-align: left;
   font-size: 80px;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
   font-weight: 700;
   color: #34252F;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.timerpage-container {
+  background-color: whitesmoke;
+  padding: 5px 100px;
+  border-radius: 20px;
+  border: 5px outset #BEC5AD;
 }
