@@ -4,8 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import '../../assets/css/planner.css'
 import { usePlanner } from '../../contexts/PlannerContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 function PlannerPage() {
+
+  // Import username
+  const { username } = useAuth()
 
   // Define data
   const { setTasks } = usePlanner();
@@ -19,10 +23,10 @@ function PlannerPage() {
   // Fetch all user tasks
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/planners', {
+      const response = await fetch(`http://localhost:5000/planners/user/${username}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
       });
       if (!response.ok) {
