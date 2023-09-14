@@ -14,6 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 200px;
+  color: #7b3d53;
 }
 
 .register-container,
@@ -38,11 +39,11 @@ body {
   width: 100%;
   border: none;
   margin-bottom: 30px;
-  border-radius: 5px;
+  border-radius: 18px;
 }
 
 .form-container label {
-  font-size: 20px;
+  font-size: 25px;
   line-height: 1.8rem;
 }
 
@@ -53,21 +54,29 @@ body {
 
 .login:hover,
 .register:hover {
-  background-color: #ffe7fa;
+  background-color: #fee7f9;
+}
+
+.login,
+.register {
+  border: 5px solid #cea3bf;
+  box-shadow: 0 0 1px 8px #fbffff;
+  background-color: #99fff1;
 }
 
 .tab {
   border: none;
   padding: 20px;
   width: 20vw;
-  background-color: #ffe7fa;
+  background-color: #fee7f9;
   cursor: pointer;
   font-size: 25px;
   overflow: hidden;
+  color: #7b3d53;
 }
 
 .tab.active {
-  background-color: #f0bada;
+  background-color: #f0bbda;
 }
 
 
