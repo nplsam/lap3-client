@@ -87,4 +87,6 @@ body {
   font-size: 60px;
 }
 
-
+.timer-on-other-page {
+  display: none;
+}
