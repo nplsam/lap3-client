@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 const PlannerForm = ({ actionPost, currentTask, showEditButtons, setshowEditButtons }) => {
 
   // Import data
-  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, tasks, setTasks } = usePlanner()
+  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, setTasks } = usePlanner()
   const { username } = useAuth()
 
   // Define form message
