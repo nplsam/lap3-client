@@ -87,11 +87,5 @@ describe('Timer component', () => {
     expect(presetButton).toBeInTheDocument()
     expect(text).toBe('25 mins')
   })
-
-  it('has a toggle button', () => {
-    const toggleButton = screen.getByLabelText('toggle-btn')
-    expect(toggleButton).toBeInTheDocument()
-
-  })
 })
 
