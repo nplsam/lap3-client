@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #A4B494;
+  background-color: #e2ffe5;
 }
 
 .form-container {
@@ -13,6 +13,7 @@ body {
   align-items: center;
   margin: 200px;
 }
+
 .register-container,
 .login-container {
   background-color: #E2B4BD;
@@ -34,6 +35,7 @@ body {
   width: 100%;
   border: none;
   margin-bottom: 30px;
+  border-radius: 5px;
 }
 
 .form-container label {
@@ -64,5 +66,7 @@ body {
 .tab.active {
   background-color: #E2B4BD;
 }
+
+
 
 
