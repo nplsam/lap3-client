@@ -4,7 +4,6 @@ import axios from 'axios'
 
 import { useAuth } from '../../contexts/AuthContext'
 
-
 const Login = () => {
   const navigate = useNavigate()
 
@@ -12,38 +11,36 @@ const Login = () => {
   const [message, setMessage] = useState('')
 
   function handleUsername(e) {
-    setUsername(e.target.value)
+    setUsername(e.target.value.toString())
   }
 
   function handlePassword(e) {
-    setPassword(e.target.value)
+    setPassword(e.target.value.toString())
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     if (username.length > 0 && password.length > 0) {
       try {
-        await axios.get('url', {
+        const response = await axios.post('http://localhost:5000/auth/login', {
           username: username,
           password: password,
         });
-
-        setUsername('')
-        setPassword('')
-        setIsLoggedIn(true)
-        navigate('/home')
-
-        // setMessage('Login successful');
-        // setTimeout(() => {
-        //   setMessage('')
-        // }, 3000);
+  
+        if (response.data.token) {
+          localStorage.setItem('token', response.data.token);
+          setIsLoggedIn(true);
+          setUsername('');
+          setPassword('');
+          navigate('/');
+        } 
 
       } catch (err) {
-        setUsername('')
-        setPassword('')
-        setMessage('Incorrect credentials.');
+        setUsername('');
+        setPassword('');
+        setMessage('Invalid username or password.');
         setTimeout(() => {
-          setMessage('')
+          setMessage('');
         }, 2000);
       }
     }
