@@ -3,7 +3,7 @@ import { usePlanner } from '../../contexts';
 
 const PlannerForm = ({ actionPost, currentTask }) => {
 
-  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, tasks, setTasks } = usePlanner()
+  const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, setTasks } = usePlanner()
   
   const handleInputDate = (e) => {
     setInputDate(e.target.value);
