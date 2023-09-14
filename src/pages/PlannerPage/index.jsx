@@ -3,7 +3,7 @@ import { PlannerCalendar, PlannerForm } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import '../../assets/css/planner.css'
-import { usePlanner } from '../../contexts';
+import { usePlanner } from '../../contexts/PlannerContext';
 
 function PlannerPage() {
 

@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&display=swap');
+
+/*  */
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border: 1.5px solid green;
+    border-radius: 20px;
+    background-color: transparent;
+    color: green;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    font-family: 'Alkatra', cursive;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+}
+  
+button:hover {
+    background-color: #d7fcbf;
+    border: 0.5px inset #008000;
+}
+
+/*  */
 body {
     height: 100vh;
 }
