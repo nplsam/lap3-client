@@ -36,7 +36,7 @@ const NotesPage = () => {
   useEffect(() => {
     async function fetchNotes() {
       try {
-        const response = await fetch(`http://localhost:3000/api/notes`);
+        const response = await fetch(`http://localhost:5000/notes/user/${username}`);
         if (!response.ok) {
           throw new Error('Failed to fetch notes');
         }
@@ -52,8 +52,6 @@ const NotesPage = () => {
   useEffect(() => {
     if (!currentNoteId && notes.length > 0) {
       setCurrentNoteId(notes[0]?.id);
-    } else if (notes.length === 0) {
-      setCurrentNoteId(null); // Set currentNoteId to null when there are no notes
     }
   }, [notes]);
 
@@ -75,13 +73,13 @@ const NotesPage = () => {
 async function createNewNote() {
 
   try {
-    const response = await fetch('http://localhost:3000/api/notes', {
+    const response = await fetch('http://localhost:5000/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': localStorage.token
       },
-      body: JSON.stringify({title: title, subject: subject, topic_tags: [], content: ''}),
+      body: JSON.stringify({title: title, subject: subject, topic_tags: '', content: ''}),
     });
 
     if (!response.ok) {
@@ -89,7 +87,7 @@ async function createNewNote() {
     }
 
     const data = await response.json();
-    setCurrentNoteId(data.id);
+    setCurrentNoteId(data._id);
     setNotes((prevNotes) => [...prevNotes, data]);
     setText('')
   } catch (error) {
@@ -103,7 +101,7 @@ async function updateNoteInAPI(text) {
     };
   
     try {
-      const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
+      const response = await fetch(`http://localhost:5000/notes/${currentNoteId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +126,7 @@ async function updateNoteInAPI(text) {
 
   async function deleteNote(noteId) {
     try {
-      const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
+      const response = await fetch(`http://localhost:5000/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': localStorage.token
@@ -149,7 +147,7 @@ async function updateNoteInAPI(text) {
       const updatedTitle = title.trim() === '' ? currentNote.title : title;
       const updatedSubject = subject.trim() === '' ? currentNote.subject : subject;
   
-      const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
+      const response = await fetch(`http://localhost:5000/notes/${currentNoteId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
