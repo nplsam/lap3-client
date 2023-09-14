@@ -6,41 +6,45 @@ import { usePlanner } from '../../contexts/PlannerContext';
 
 const PlannerItem = ({ task }) => {
 
+  // Import data
   const { setInputDate, setInputTag, setInputContent, setTasks } = usePlanner();
 
+  // Define flags
   const [showItem, setShowItem] = useState(false)
   const [showEditButtons, setshowEditButtons] = useState()
 
   const toggleItem = () => {
+    // toggle item
     setShowItem(!showItem)
     setshowEditButtons(false)
 
-    // cleanEditForm
+    // clean edit form
     setInputDate('')
     setInputTag('')
     setInputContent('')
   }
 
   const setupEditProcces = () => {
-    // toggleButtons
+    // toggle buttons
     setshowEditButtons(!showEditButtons)
 
-    // setupEditForm
+    // clean edit form
     setInputDate(task.date)
     setInputTag(task.tag)
     setInputContent(task.content)
   }
 
   const rollbackEditProcces = () => {
-    // toggleButtons
+    // toggle buttons
     setshowEditButtons(!showEditButtons)
 
-    // cleanEditForm
+    // clean edit form
     setInputDate('')
     setInputTag('')
     setInputContent('')
   }
 
+  // Delete task from DB and tasks state
   async function deleteTask(task) {
     try {
       const response = await fetch(`http://localhost:5000/notes/${task._id}`, {

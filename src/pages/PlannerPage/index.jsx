@@ -7,13 +7,16 @@ import { usePlanner } from '../../contexts/PlannerContext';
 
 function PlannerPage() {
 
+  // Define data
   const { setTasks } = usePlanner();
   const [showAddForm, setshowAddForm] = useState()
 
+  // Toggle flag for form popup
   const toggleAddForm = () => {
     setshowAddForm(!showAddForm)
   }
 
+  // Fetch all user tasks
   const fetchTasks = async () => {
     try {
       const response = await fetch('http://localhost:5000/planners', {
