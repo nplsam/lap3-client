@@ -1,0 +1,63 @@
+.toggle-container {
+  margin-top: 10px;
+}
+
+.toggle-button {
+  display: inline-block;
+  position: relative;
+  width: 69px; 
+  height: 31px;
+}
+
+.toggle-button input[type="checkbox"] {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #93A8AC;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 27px;
+  width: 27px;
+  left: 40px;
+  bottom: 2px;
+  background-color: #FFFFFF;
+  transition: 0.1s;
+  border-radius: 50%;
+}
+
+.label-text {
+  position: absolute;
+  left: -12px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.toggle-button.work .slider {
+  background-color: #9B6A6C;
+}
+
+.toggle-button.rest .slider:before {
+  transform: translateX(-38px);
+}
+.toggle-button.rest .label-text {
+  left: 12px;
+  color: #424B54;
+}

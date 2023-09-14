@@ -1,18 +1,34 @@
 import { useState, useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
+import { useNotes } from "../../contexts/NotesContext"
+import '../../assets/css/notes.css'
 
 const NotesPage = () => {
-  const [notes, setNotes] = useState([]);
-  const [currentNoteId, setCurrentNoteId] = useState("");
-  const [tempNoteText, setTempNoteText] = useState("");
-  const [title, setTitle] = useState("");
-  const [subject, setSubject] = useState(""); 
+  const {
+    notes,
+    setNotes,
+    currentNoteId,
+    setCurrentNoteId,
+    text,
+    setText,
+    title,
+    setTitle,
+    subject,
+    setSubject,
+    selectedNoteTitle,
+    setSelectedNoteTitle,
+    selectedNoteSubject,
+    setSelectedNoteSubject,
+    searchQuery,
+    setSearchQuery
+    } = useNotes()
 
   const currentNote =
     notes.find((note) => note.id === currentNoteId) || notes[0];
 
-  const sortedNotes = notes.sort((a, b) => b.updatedAt - a.updatedAt);
+  const sortedNotes = 
+    notes.sort((a, b) => b.updatedAt - a.updatedAt);
 
   useEffect(() => {
     async function fetchNotes() {
@@ -38,35 +54,24 @@ const NotesPage = () => {
 
   useEffect(() => {
     if (currentNote) {
-      setTempNoteText(currentNote.body);
+      setText(currentNote.body);
     }
   }, [currentNote]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (tempNoteText !== currentNote.body) {
-        updateNoteInAPI(tempNoteText);
+      if (text !== currentNote.body) {
+        updateNoteInAPI(text);
       }
     }, 500);
     return () => clearTimeout(timeoutId);
-  }, [tempNoteText, currentNote, updateNoteInAPI]);
-
-  async function fetchNotesFromAPI() {
-    try {
-      const response = await fetch('http://localhost:3000/api/notes');
-      if (!response.ok) {
-        throw new Error('Failed to fetch notes');
-      }
-      const data = await response.json();
-      setNotes(data);
-    } catch (error) {
-      console.error('Error fetching notes:', error);
-    }
-  }
+  }, [text, currentNote, updateNoteInAPI]);
 
 async function createNewNote() {
   const newNote = {
-    body: "# Type your page title here..",
+    title: title,
+    subject: subject,
+    body: '',
   };
 
   try {
@@ -85,13 +90,16 @@ async function createNewNote() {
     const data = await response.json();
     setCurrentNoteId(data.id);
     setNotes((prevNotes) => [...prevNotes, data]);
+    setText('')
   } catch (error) {
     console.error('Error creating a new note:', error);
   }
 }
-async function updateNoteInAPI(text) {
+async function updateNoteInAPI(text, newTitle, newSubject) {
     const updatedNote = {
       body: text,
+      title: newTitle,
+      subject: newSubject,
     };
   
     try {
@@ -109,7 +117,7 @@ async function updateNoteInAPI(text) {
   
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
-          note.id === currentNoteId ? { ...note, body: text } : note
+          note.id === currentNoteId ? { ...note, body: text, title: newTitle, subject: newSubject  } : note
         )
       );
     } catch (error) {
@@ -132,29 +140,42 @@ async function updateNoteInAPI(text) {
     }
   }
 
-async function handleSave() {
-  try {
-    const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: title,
-        subject: subject,
-        body: tempNoteText,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to update the note');
+  async function handleSave() {
+    try {
+      const updatedTitle = title.trim() === '' ? currentNote.title : title;
+      const updatedSubject = subject.trim() === '' ? currentNote.subject : subject;
+  
+      const response = await fetch(`http://localhost:3000/api/notes/${currentNoteId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: updatedTitle,
+          subject: updatedSubject,
+          body: text,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update the note');
+      }
+  
+      setSelectedNoteTitle(updatedTitle);
+      setSelectedNoteSubject(updatedSubject);
+  
+      setNotes((prevNotes) =>
+        prevNotes.map((note) =>
+          note.id === currentNoteId ? { ...note, title: updatedTitle, subject: updatedSubject } : note
+        )
+      );
+  
+      setTitle('');
+      setSubject('');
+    } catch (error) {
+      console.error('Error updating the note:', error);
     }
-
-    console.log('Note saved successfully!');
-  } catch (error) {
-    console.error('Error updating the note:', error);
   }
-}
 
   return (
     <main>
@@ -166,22 +187,26 @@ async function handleSave() {
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
             deleteNote={deleteNoteFromAPI}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery} 
+            setSelectedNoteTitle={setSelectedNoteTitle}
+            selectedNoteSubject={selectedNoteSubject}
           />
          <Editor
             title={title}       
             setTitle={setTitle}   
             subject={subject}     
             setSubject={setSubject} 
-            tempNoteText={tempNoteText}
-            setTempNoteText={setTempNoteText}
-            handleSave={handleSave}
+            text={text}
+            setText={setText}
+            handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
       ) : (
         <div className="no-notes">
-          <h1>You have no notes</h1>
+          <h1>Notes</h1>
           <button className="first-note" onClick={createNewNote}>
-            Create one now
+            New
           </button>
         </div>
       )}

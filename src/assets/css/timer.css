@@ -1,0 +1,125 @@
+*{
+  box-sizing: border-box;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E2B4BD;
+  padding: 50px 10px;
+  border: 1px solid #3333;
+  border-radius: 20px;
+  width: 600px;
+  margin-bottom: 30px;
+  font-family: "Play", sans-serif;
+}
+
+.timer {
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+  color: #424B54;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 28px;
+  max-width: 80%;
+}
+
+select {
+  padding: 2px 0px 2px 10px;
+  font-size: 20px;
+  border-radius: 13px;
+  font-family: "Play", sans-serif;
+  background-color: transparent;
+  border: 1px solid #9B6A6C;
+  color: #9B6A6C;
+  cursor: pointer;
+}
+
+select:hover,
+select:focus {
+  border: 0.5px inset #9B6A6C;
+  background-color: #eec1cae0;
+}
+
+select::-webkit-scrollbar {
+  width: 10px;
+}
+
+select::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #9B6A6C;
+}
+
+select::-webkit-scrollbar-track {
+  background-color: #E2B4BD;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttons, 
+.play-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.play-buttons button {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1.5px solid #9B6A6C;
+}
+
+.buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1.5px solid #9B6A6C;
+  border-radius: 14px;
+  background-color: transparent;
+  color: #9B6A6C;
+  transition: background-color 0.3s ease;
+  width: 100px;
+  font-family: "Play", sans-serif;
+  font-size: 20px;
+}
+
+.buttons button:hover {
+  border: 0.5px inset #9B6A6C;
+  background-color: #eec1cae0;
+}
+
+.play-buttons button:hover {
+  border: 0.5px inset #9B6A6C;
+  background-color: #eec1cae0;
+}
+
+.message {
+  margin:0; 
+  font-size: 50px;
+  color: #424B54;
+}
