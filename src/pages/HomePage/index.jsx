@@ -55,14 +55,15 @@ const HomePage = () => {
                 Boost Productivity with Pomodoro
               </button>
             </Link>
+              <div className="timer-on-other-page">
+                <Timer />
+              </div>
           </div>
            ) 
         : null 
         } 
 
-        <div className="timer-on-other-page">
-          <Timer />
-        </div>
+
         
       </>
   )

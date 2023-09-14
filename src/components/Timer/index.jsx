@@ -5,11 +5,14 @@ import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icon
 import '../../assets/css/timer.css';
 import chimeSound from '../../assets/sounds/chime.mp3';
 import { useTimer } from '../../contexts/TimerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { ToggleButton } from '../../components'
 
 
 const Timer = () => {
   const { hours, setHours, minutes, setMinutes, seconds, setSeconds, isActive, setIsActive, showMessage, setShowMessage} = useTimer();
+
+  const { isLoggedIn } = useAuth()
 
   useEffect(() => {
     let interval;
@@ -35,12 +38,20 @@ const Timer = () => {
         }
       }
     };
+
+    if (!isLoggedIn) {
+      setIsActive(false);
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
+      setShowMessage(false);
+    };
   
     if (isActive) {
       interval = setInterval(countDown, 1000);
       setShowMessage(false);
-    }
-  
+    };
+
     return () => {
       clearInterval(interval);
     };
