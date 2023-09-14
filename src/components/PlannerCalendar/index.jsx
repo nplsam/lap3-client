@@ -59,6 +59,7 @@ const PlannerCalendar = () => {
 
         tasks.forEach(task => {
             const taskDate = new Date(task.date)
+            console.log(task)
             const taskIndex = taskDate.getDate() - 1
 
             if(taskDate.getFullYear() === currentYear && taskDate.getMonth() === currentMonth) {

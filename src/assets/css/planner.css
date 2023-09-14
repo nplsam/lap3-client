@@ -88,7 +88,7 @@ body {
     border-top: 1px black solid;
     min-width: 150px;
     height: 150px;
-    padding: 10px;
+    padding: 5px;
 }
 
 #PlannerCalendar .day-with-date {
@@ -133,17 +133,38 @@ body {
 #PlannerCalendar .item {
     border: 1px solid black;
     border-radius: 20px;
-    padding: 1px 10px;
+    padding: 0 10px;
     text-align: center;
     cursor: pointer;
     background-color: green;      
     margin-top: 5px;
+    line-height: 1.2;
 }
 
-#PlannerCalendar .item div {
+#PlannerCalendar .item:hover {
+    background-color: darkgreen;
+}
+
+#PlannerCalendar .item .item-container {
+    display: flex;
+}
+
+#PlannerCalendar .item .item-time {
+    border-right: 1px black solid;
+    margin-right: 5px;
+    text-align: center;
+    padding-right: 5px;
+}
+
+#PlannerCalendar .item .item-content {
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+#PlannerCalendar .item .item-content::first-letter {
+    text-transform: capitalize;
 }
 
 #PlannerCalendar .item:first-child {
@@ -269,4 +290,22 @@ body {
     position: absolute;
     bottom: 25px;
     left: 25px;
+}
+
+/*  */
+textarea {
+    padding-right: 5px;
+}
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+  
+textarea::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: #969696;
+    border-radius: 5px;
 }

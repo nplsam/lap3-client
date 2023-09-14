@@ -25,7 +25,7 @@ export const PlannerProvider = ({ children }) => {
   const [inputDate, setInputDate] = useState('');
   const [inputTag, setInputTag] = useState('');
   const [inputContent, setInputContent] = useState('');
-  const [tasks, setTasks] = useState([{date: '2023-09-12', tag: 'tag', content: 'content'}]);
+  const [tasks, setTasks] = useState([]);
 
     return (
       <PlannerContext.Provider value={{ inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, tasks, setTasks }}>

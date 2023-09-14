@@ -4,9 +4,9 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import PlannerForm from '../PlannerForm';
 import { usePlanner } from '../../contexts';
 
-const PlannerItem = ({task, deleteTask }) => {
+const PlannerItem = ({ task }) => {
 
-  const { setInputDate, setInputTag, setInputContent } = usePlanner();
+  const { setInputDate, setInputTag, setInputContent, setTasks } = usePlanner();
 
   const [showItem, setShowItem] = useState(false)
   const [showEditButtons, setshowEditButtons] = useState()
@@ -41,16 +41,40 @@ const PlannerItem = ({task, deleteTask }) => {
     setInputContent('')
   }
 
+  async function deleteTask(task) {
+    try {
+      const response = await fetch(`http://localhost:3000/notes/${task._id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to delete the task');
+      }
+      setTasks((prevTasks) => prevTasks.filter((el) => el !== task));
+    } catch (error) {
+      console.error('Error deleting the task:', error);
+    }
+  }
+
   return (
     <>
-      <div className='item' onClick={toggleItem}><div>{task.content}</div></div>
+      <div className='item' onClick={toggleItem}>
+        <div className='item-container'>
+          <div className='item-time'>{new Date(task.date).toLocaleTimeString('en-GB', { hour: "2-digit", minute: "2-digit" })} </div>
+          <div className='item-content'>{task.content}</div>
+        </div>
+      </div>
       {showItem && (
         <div className="full-item-container">
           <div className="full-item">
             <FontAwesomeIcon icon={faXmark} onClick={toggleItem}/>
             {!showEditButtons && (
               <>
-                <p><span className='item-title'>Date: </span>{task.date}</p>
+              <p><span className='item-title'>Time: </span>{new Date(task.date).toLocaleTimeString('en-GB', { hour: "2-digit", minute: "2-digit" })}</p>
+                <p><span className='item-title'>Date: </span>{new Date(task.date).toLocaleDateString('en-GB', { day:"numeric", weekday:"long", month:"short", year:"numeric"})}</p>
                 <p><span className='item-title'>Tag: </span>{task.tag}</p>
                 <div className='item-task-title'>Task:</div>
                 <p className='item-task'>{task.content}</p>
@@ -62,7 +86,7 @@ const PlannerItem = ({task, deleteTask }) => {
             )}
             {showEditButtons && (
               <>
-                <PlannerForm actionPost={false}/>
+                <PlannerForm actionPost={false} currentTask={task}/>
                 <div className='item-buttons-container'>
                   <button className='fake-save-button'>Save</button>
                   <button onClick={rollbackEditProcces}>Cancel</button>
