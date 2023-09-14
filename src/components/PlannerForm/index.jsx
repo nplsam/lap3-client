@@ -44,7 +44,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
         body: JSON.stringify({date: inputDate, tag: inputTag, content: inputContent}),
       });
@@ -84,7 +84,7 @@ const PlannerForm = ({ actionPost, currentTask }) => {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
         body: JSON.stringify({date: inputDate, tag: inputTag, content: inputContent}),
       });

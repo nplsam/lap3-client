@@ -53,7 +53,7 @@ const PlannerItem = ({ task }) => {
       const response = await fetch(`http://localhost:5000/notes/${task._id}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${localStorage.token}`
+          'Authorization': localStorage.token
         },
       });
   

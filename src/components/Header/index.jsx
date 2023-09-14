@@ -6,11 +6,13 @@ import { useAuth } from '../../contexts/AuthContext';
 const styles = ({ isActive }) => ({ textDecoration: isActive ? 'underline' : 'none' });
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { isLoggedIn, setIsLoggedIn, setUsername } = useAuth();
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('token');
+    // Instead of login, I will delete username on logout (Valentin)
+    setUsername('');
   };
 
   return (
