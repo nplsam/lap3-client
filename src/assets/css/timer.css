@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Caveat:wght@600;700&family=Varela+Round&display=swap');
+
 *{
   box-sizing: border-box;
 }
@@ -7,13 +9,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #E2B4BD;
+  background-color: whitesmoke;
   padding: 50px 10px;
-  border: 1px solid #3333;
+  /* border: 1px solid #3B5249; */
   border-radius: 20px;
   width: 600px;
   margin-bottom: 30px;
-  font-family: "Play", sans-serif;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .timer {
@@ -23,7 +27,7 @@
   justify-content: center;
   align-items: center;
   font-size: 120px;
-  color: #424B54;
+  color: #34252F;
 }
 
 .dropdowns {
@@ -37,18 +41,19 @@
 select {
   padding: 2px 0px 2px 10px;
   font-size: 20px;
-  border-radius: 13px;
-  font-family: "Play", sans-serif;
-  background-color: transparent;
-  border: 1px solid #9B6A6C;
-  color: #9B6A6C;
+  border-radius: 8px;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  font-family: 'Varela Round', sans-serif;  background-color: transparent;
+  border: 1px solid #3B5249;
+  color: #34252F;
   cursor: pointer;
 }
 
 select:hover,
 select:focus {
-  border: 0.5px inset #9B6A6C;
-  background-color: #eec1cae0;
+  border: 0.5px inset #3B5249;
+  background-color: #d5dbc9;
 }
 
 select::-webkit-scrollbar {
@@ -57,11 +62,11 @@ select::-webkit-scrollbar {
 
 select::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background-color: #9B6A6C;
+  background-color: #A4B494;
 }
 
 select::-webkit-scrollbar-track {
-  background-color: #E2B4BD;
+  background-color: #BEC5AD;
 }
 
 .buttons-container {
@@ -89,33 +94,35 @@ select::-webkit-scrollbar-track {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  border: 1.5px solid #9B6A6C;
+  border: 1.5px solid #3B5249;
 }
 
 .buttons button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 10px;
+  padding: 4px 8px;
   cursor: pointer;
-  border: 1.5px solid #9B6A6C;
-  border-radius: 14px;
+  border: 1.5px solid #3B5249;
+  border-radius: 8px;
   background-color: transparent;
-  color: #9B6A6C;
+  color: #34252F;
   transition: background-color 0.3s ease;
   width: 100px;
-  font-family: "Play", sans-serif;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  font-family: 'Varela Round', sans-serif;
   font-size: 20px;
 }
 
 .buttons button:hover {
-  border: 0.5px inset #9B6A6C;
-  background-color: #eec1cae0;
+  border: 0.5px inset #3B5249;
+  background-color: #d5dbc9;
 }
 
 .play-buttons button:hover {
-  border: 0.5px inset #9B6A6C;
-  background-color: #eec1cae0;
+  border: 0.5px inset #3B5249;
+  background-color: #d5dbc9;
 }
 
 .message {
