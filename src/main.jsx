@@ -6,15 +6,18 @@ import App from './App'
 import { TimerProvider } from './contexts/TimerContext'
 import { NotesProvider } from './contexts/NotesContext'
 import { AuthProvider } from './contexts/AuthContext'
+import { PlannerProvider } from './contexts/PlannerProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <NotesProvider>
         <TimerProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <PlannerProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </PlannerProvider>
         </TimerProvider>
       </NotesProvider>
     </AuthProvider>
