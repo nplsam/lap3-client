@@ -19,7 +19,7 @@ const Header = () => {
     <>
       <header>
         <nav className="navbar">
-          <div className="logo">Logo</div>
+          <div className="logo"></div>
           <ul className="nav-links">
             <li className="nav-container">
               <NavLink to="/" style={styles}>
