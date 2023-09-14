@@ -3,7 +3,9 @@
 }
 
 body {
-  background-color: #e2ffe5;
+  background-image: url('../../assets/images/bgg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .form-container {
@@ -17,7 +19,8 @@ body {
 
 .register-container,
 .login-container {
-  background-color: #f0bbda;
+  background-color: #f0bada;
+  border-color: #eb7194;
   padding: 10px 100px; 
   display: flex;
   justify-content: center;
