@@ -30,6 +30,14 @@ const NotesPage = () => {
   const sortedNotes = 
     notes.sort((a, b) => b.updatedAt - a.updatedAt);
 
+  const { noteText, setNoteTextById } = useNotes();
+
+  const currentNoteText = noteText[currentNoteId] || "";
+
+  const handleTextChange = (newText) => {
+    setNoteTextById(currentNoteId, newText);
+  };
+
   // Function to get username
   const getUsername = async () => {
     try {
@@ -227,8 +235,8 @@ async function updateNoteInAPI(text) {
             setTitle={setTitle}   
             subject={subject}     
             setSubject={setSubject} 
-            text={text}
-            setText={setText}
+            text={currentNoteText}
+            setText={handleTextChange}
             handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
