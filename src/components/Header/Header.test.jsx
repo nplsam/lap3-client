@@ -1,17 +1,22 @@
 import React from 'react'
-import { describe, it, expect, beforeEach, afterEach} from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { screen, render, cleanup } from '@testing-library/react'
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
+
 import * as matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 
 import Header from '.'
+import { AuthProvider } from '../../contexts/AuthContext';
 
 describe('Header Component', () => {
     beforeEach(() => {
         render(
             <MemoryRouter>
-                <Header />
+                <AuthProvider>
+                    <Header />
+                </AuthProvider>
             </MemoryRouter>
         )
     })
@@ -24,7 +29,12 @@ describe('Header Component', () => {
         const nav = screen.getByRole('list')
 
         expect(nav).toBeInTheDocument()
-        expect(nav.childNodes.length).toBe(4)
+        expect(nav.childNodes.length).toBe(5)
+    })
+
+    it('displays a Logo', () => {
+        const logo = screen.getByRole('div', { name: 'Logo' });
+        expect(logo).toBeInTheDocument()
     })
 
     it('displays a "Home" link', () => {
@@ -32,7 +42,6 @@ describe('Header Component', () => {
 
         expect(homeLink).toBeInTheDocument()
     })
-
     
     it('displays a "Notes" link', () => {
         const notesLink = screen.getByText('Notes')
@@ -40,7 +49,6 @@ describe('Header Component', () => {
         expect(notesLink).toBeInTheDocument()
     })
 
-    
     it('displays a "Planner" link', () => {
         const plannerLink = screen.getByText('Planner')
 
@@ -48,8 +56,14 @@ describe('Header Component', () => {
     })
 
     it('displays a "Timer" link', () => {
-        const timerLink = screen.getByText('Timer')
+        const timerLink = screen.getByText('Pomodoro Timer')
 
         expect(timerLink).toBeInTheDocument()
+    })
+
+    it('displays a "Login/Register" link', () => {
+        const loginRegLink = screen.getByText('Login/Register')
+
+        expect(loginRegLink).toBeInTheDocument()
     })
 });
