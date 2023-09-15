@@ -11,15 +11,15 @@ const LoginRegister = () => {
     };
   return (
     <>
-      <div className="form-container">
-        <div className="tabs">
-          <button
+      <div role='form' className="form-container">
+        <div role='tabs' className="tabs">
+          <button role='register-tab'
             className={`tab ${activeTab === 'register' ? 'active' : ''}`}
             onClick={() => handleTabChange('register')}
           >
             Register
           </button>
-          <button
+          <button role='login-tab'
             className={`tab ${activeTab === 'login' ? 'active' : ''}`}
             onClick={() => handleTabChange('login')}
           >
@@ -28,11 +28,11 @@ const LoginRegister = () => {
         </div>
 
         {activeTab === 'register' ? (
-          <div className="register-container">
+          <div role='register-form'className="register-container">
             <Register />
           </div>
         ) : (
-          <div className="login-container">
+          <div role='login-form' className="login-container">
             <Login />
           </div>
         )}
