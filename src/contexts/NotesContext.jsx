@@ -4,7 +4,7 @@ const NotesContext = createContext();
 
 export const NotesProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
-  const [currentNoteId, setCurrentNoteId] = useState("");
+  const [currentNoteId, setCurrentNoteId] = useState(null);
   const [noteText, setNoteText] = useState({});
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
