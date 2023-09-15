@@ -32,6 +32,7 @@ const NotesPage = () => {
 
   const { noteText, setNoteTextById } = useNotes();
 
+  // Handling change to separate text content for each note
   const currentNoteText = noteText[currentNoteId] || "";
 
   const handleTextChange = (newText) => {
