@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
 import { useNotes } from "../../contexts/NotesContext"
+import { Timer } from '../../components';
 import '../../assets/css/notes.css'
 
 const NotesPage = () => {
@@ -241,6 +242,9 @@ async function updateNoteInAPI(text) {
             handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
+        <div  className="timer-on-other-page">
+                <Timer />
+        </div>
     </main>
   );
 };
