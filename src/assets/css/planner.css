@@ -6,6 +6,10 @@ body {
     height: 100vh;
 }
 
+#planner {
+    padding: 30px;
+}
+
 /* Buttons style */
 #planner button {
     display: flex;
@@ -33,7 +37,7 @@ body {
 /* Button for add task form style */
 button#addNewTask-button {
     width: 300px;
-    margin: 50px auto 0;
+    margin: 0 auto;
 }
 
 /* Add task form style */
@@ -87,7 +91,7 @@ button#addNewTask-button {
 
 /* Planner calendar style */
 #PlannerCalendar-container {
-    margin: 50px;
+    margin-top: 30px;
 }
 #PlannerCalendar-controls {
     display: flex;
