@@ -74,7 +74,7 @@ function PlannerPage() {
   return (
     <div id='planner'>
       <button id='addNewTask-button' onClick={toggleAddForm}>Add new task</button>
-      <PlannerCalendar />
+      <PlannerCalendar showAddForm={showAddForm} setshowAddForm={setshowAddForm} />
       {showAddForm && (
         <div id='addTask-form'>
           <div id='addTask-form-conatiner'>

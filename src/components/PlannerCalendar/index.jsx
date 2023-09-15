@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import PlannerList from '../PlannerList'
 import { usePlanner } from '../../contexts/PlannerContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const PlannerCalendar = () => {
+const PlannerCalendar = ({showAddForm, setshowAddForm}) => {
 
     // Import data
-    const { tasks } = usePlanner();
+    const { tasks, setInputDate } = usePlanner();
 
     // Define dynamic data
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
@@ -18,6 +20,11 @@ const PlannerCalendar = () => {
     const currentDate = new Date()
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+    // Create right date format for + buttons
+    function dateFormat (index) {
+        return `${currentYear}-${currentMonth + 1 > 9 ? (currentMonth + 1) : '0' + (currentMonth + 1)}-${index + 1 > 9 ? (index + 1) : '0' + (index + 1)}T00:00`
+    }
 
     // Change current month to next one
     const nextMonth = () => {
@@ -100,7 +107,10 @@ const PlannerCalendar = () => {
                 ))}
                 {currentMonthArr.map((data, index) => (
                     <div className={`day day-with-date ${data[0] == -1 ? 'current-date' : ''}`} key={index}>
-                        <div className={`date ${data[0] == 5 ? 'red-date' : ''}${data[0] == 6 ? 'red-date' : ''}`}>{index + 1}</div>
+                        <div className='date-container'>
+                            <div className={`date ${data[0] == 5 ? 'red-date' : ''}${data[0] == 6 ? 'red-date' : ''}`}>{index + 1}</div>
+                            <FontAwesomeIcon icon={faPlus} onClick={() => {setshowAddForm(!showAddForm); setInputDate(dateFormat(index))}}/>
+                        </div>
                         <PlannerList data={data} />
                     </div>
                 ))}
