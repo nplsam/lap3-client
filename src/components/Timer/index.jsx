@@ -126,9 +126,9 @@ const Timer = () => {
           
         {isActive ? null : (
           <div className="buttons">
-            <button onClick={() => handlePresetClick(5)}>5 mins</button>
-            <button onClick={() => handlePresetClick(10)}>10 mins</button>
-            <button onClick={() => handlePresetClick(25)}>25 mins</button>
+            <button role='presetBtn5' onClick={() => handlePresetClick(5)}>5 mins</button>
+            <button role='presetBtn10' onClick={() => handlePresetClick(10)}>10 mins</button>
+            <button role='presetBtn25' onClick={() => handlePresetClick(25)}>25 mins</button>
           </div>
         )}
       </div>

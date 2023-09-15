@@ -52,7 +52,7 @@ const Register = () => {
         onSubmit={handleSubmit}
       > 
         <label>Username: </label>
-        <input
+        <input role='username-input'
           type="text"
           id="username"
           onChange={handleUsername}
@@ -62,7 +62,7 @@ const Register = () => {
         />
 
         <label>Password: </label>
-        <input
+        <input role='password-input'
           type="password"
           id="password"
           onChange={handlePassword}
@@ -71,7 +71,7 @@ const Register = () => {
           required
         />
         
-        <input className='register' type="submit" value="Register" />
+        <input role='submit-button' className='register' type="submit" value="Register" />
         {message && <p >{message}</p>}
       </form>
     </>

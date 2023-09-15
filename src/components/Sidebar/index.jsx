@@ -25,13 +25,13 @@ const Sidebar = (props) => {
   };
 
   const noteElements = filteredNotes.map((note, index) => (
-    <div key={note.id}>
+    <div key={index}>
       <div
         className={`title ${
-          note.id === props.currentNote.id ? "selected-note" : ""
+          note._id === props.currentNote._id ? "selected-note" : ""
         }`}
         onClick={() => {
-          props.setCurrentNoteId(note.id);
+          props.setCurrentNoteId(note._id);
           props.setSelectedNoteTitle(note.title);
         }}
       >
@@ -39,11 +39,11 @@ const Sidebar = (props) => {
         {note.subject && (
           <p className="subject-snippet">{note.subject}</p>
         )}
-        {note.id === props.currentNote.id &&
+        {note._id === props.currentNote._id &&
           props.selectedNote && props.selectedNoteSubject && (
           <p className="subject-snippet">{props.selectedNoteSubject}</p>
         )}
-        <button className="delete-btn" onClick={() => props.deleteNote(note.id)}>
+        <button className="delete-btn" onClick={() => props.deleteNote(note._id)}>
           <i className="gg-trash trash-icon"></i>
         </button>
       </div>

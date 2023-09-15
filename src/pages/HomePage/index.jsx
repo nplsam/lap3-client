@@ -9,13 +9,13 @@ const HomePage = () => {
 
   return (
       <>
-        <h1 className="welcome">Welcome to Study Buddy!</h1>
+        <h1 role='welcome' className="welcome">Welcome to Study Buddy!</h1>
 
         {isLoggedIn? 
           null: 
           (
             <>
-            <div className='features'>
+            <div role='features' className='features'>
               <div className="notes">
                 <h3>Organize Your Notes</h3>
                 <p>Take and manage notes effortlessly. Stay organized and keep your study materials in one place.</p>
@@ -40,7 +40,7 @@ const HomePage = () => {
         }
 
         {isLoggedIn? (
-          <div className="homepage-btn-container">
+          <div role='buttons' className="homepage-btn-container">
             <Link to="/notes">
               <button className="page-btn notes-btn">
                 Organize Your Notes

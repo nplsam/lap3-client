@@ -1,8 +1,10 @@
 import React from 'react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+
 import { screen, render, cleanup, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TimerProvider } from '../../contexts/TimerContext';
+
 
 import * as matchers from '@testing-library/jest-dom/matchers';
 expect.extend(matchers);
@@ -53,4 +55,3 @@ describe('ToggleButton component', () => {
         expect(checkbox).not.toBeChecked();
     })
 })
-  

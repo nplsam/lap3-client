@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
 import { useNotes } from "../../contexts/NotesContext"
-import { useAuth } from '../../contexts/AuthContext';
+import { Timer } from '../../components';
 import '../../assets/css/notes.css'
 
 const NotesPage = () => {
@@ -25,23 +25,61 @@ const NotesPage = () => {
     setSearchQuery
     } = useNotes()
 
-  const { username } = useAuth()
-
   const currentNote =
-    notes.find((note) => note.id === currentNoteId) || notes[0];
+    notes.find((note) => note._id === currentNoteId) || notes[0];
 
   const sortedNotes = 
     notes.sort((a, b) => b.updatedAt - a.updatedAt);
 
+  const { noteText, setNoteTextById } = useNotes();
+
+  // Handling change to separate text content for each note
+  const currentNoteText = noteText[currentNoteId] || "";
+
+  const handleTextChange = (newText) => {
+    setNoteTextById(currentNoteId, newText);
+  };
+
+  // Function to get username
+  const getUsername = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/auth/find', {
+        method: 'GET',
+        headers: {
+          'Authorization': localStorage.token
+        },
+      });
+
+      if(response.status != 200) {
+        throw new Error('Failed to logout')
+      }
+
+      const data = await response.json()
+
+      return data.response.username[0].username
+      
+    } catch (error) {
+      console.error('Failde to get username: ', error)
+    }
+  }
+
   useEffect(() => {
     async function fetchNotes() {
+      const username = await getUsername();
       try {
-        const response = await fetch(`http://localhost:5000/notes/user/${username}`);
+        const response = await fetch(`http://localhost:5000/notes/user/${username}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': localStorage.token
+          },
+        });
+
         if (!response.ok) {
           throw new Error('Failed to fetch notes');
         }
+
         const data = await response.json();
-        setNotes(data);
+        setNotes(data.response);
       } catch (error) {
         console.error('Error fetching notes:', error);
       }
@@ -50,8 +88,8 @@ const NotesPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!currentNoteId && notes.length > 0) {
-      setCurrentNoteId(notes[0]?.id);
+    if (!currentNoteId && notes.length < 0) {
+      setCurrentNoteId(notes[0]?._id);
     }
   }, [notes]);
 
@@ -63,7 +101,7 @@ const NotesPage = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (text !== currentNote.body) {
+      if (text !== currentNote.content) {
         updateNoteInAPI(text);
       }
     }, 500);
@@ -88,7 +126,7 @@ async function createNewNote() {
 
     const data = await response.json();
     setCurrentNoteId(data._id);
-    setNotes((prevNotes) => [...prevNotes, data]);
+    setNotes((prevNotes) => [...prevNotes, data.response]);
     setText('')
   } catch (error) {
     console.error('Error creating a new note:', error);
@@ -99,7 +137,7 @@ async function updateNoteInAPI(text) {
     const updatedNote = {
       content: text,
     };
-  
+    
     try {
       const response = await fetch(`http://localhost:5000/notes/${currentNoteId}`, {
         method: 'PATCH',
@@ -116,7 +154,7 @@ async function updateNoteInAPI(text) {
   
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
-          note.id === currentNoteId ? { ...note, content: text } : note
+          note._id === currentNoteId ? { ...note, content: text } : note
         )
       );
     } catch (error) {
@@ -136,7 +174,7 @@ async function updateNoteInAPI(text) {
       if (!response.ok) {
         throw new Error('Failed to delete the note');
       }
-      setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
+      setNotes((prevNotes) => prevNotes.filter((note) => note._id !== noteId));
     } catch (error) {
       console.error('Error deleting the note:', error);
     }
@@ -169,7 +207,7 @@ async function updateNoteInAPI(text) {
   
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
-          note.id === currentNoteId ? { ...note, title: updatedTitle, subject: updatedSubject } : note
+          note._id === currentNoteId ? { ...note, title: updatedTitle, subject: updatedSubject } : note
         )
       );
   
@@ -199,11 +237,14 @@ async function updateNoteInAPI(text) {
             setTitle={setTitle}   
             subject={subject}     
             setSubject={setSubject} 
-            text={text}
-            setText={setText}
+            text={currentNoteText}
+            setText={handleTextChange}
             handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
+        <div  className="timer-on-other-page">
+                <Timer />
+        </div>
     </main>
   );
 };

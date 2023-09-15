@@ -10,6 +10,7 @@ function PlannerPage() {
   // Define data
   const { setTasks } = usePlanner();
   const [showAddForm, setshowAddForm] = useState()
+  const [username, setUsername] = useState('')
 
   // Toggle flag for form popup
   const toggleAddForm = () => {
@@ -42,10 +43,11 @@ function PlannerPage() {
   // Fetch all user tasks
   const fetchTasks = async () => {
 
-    const username = await getUsername()
+    const usernameData = await getUsername()
+    setUsername(usernameData)
 
     try {
-      const response = await fetch(`http://localhost:5000/planners/user/${username}`, {
+      const response = await fetch(`http://localhost:5000/planners/user/${usernameData}`, {
         method: 'GET',
         headers: {
           'Authorization': localStorage.token
@@ -72,12 +74,12 @@ function PlannerPage() {
   return (
     <div id='planner'>
       <button id='addNewTask-button' onClick={toggleAddForm}>Add new task</button>
-      <PlannerCalendar />
+      <PlannerCalendar showAddForm={showAddForm} setshowAddForm={setshowAddForm} />
       {showAddForm && (
         <div id='addTask-form'>
           <div id='addTask-form-conatiner'>
             <FontAwesomeIcon icon={faXmark} onClick={toggleAddForm}/>
-            <PlannerForm actionPost={true} />
+            <PlannerForm actionPost={true} username={username} />
           </div>
         </div>
       )}

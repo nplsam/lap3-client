@@ -54,7 +54,7 @@ const Login = () => {
         onSubmit={handleSubmit}
       > 
         <label>Username: </label>
-        <input
+        <input role='username-input'
           type="text"
           id="username"
           onChange={handleUsername}
@@ -64,7 +64,7 @@ const Login = () => {
         />
 
         <label>Password: </label>
-        <input
+        <input role='password-input'
           type="password"
           id="password"
           onChange={handlePassword}
@@ -73,7 +73,7 @@ const Login = () => {
           required
         />
 
-        <input className='login' type="submit" value="Login" />
+        <input role='submit-button' className='login' type="submit" value="Login" />
         {message && <p>{message}</p>}
 
       </form>
