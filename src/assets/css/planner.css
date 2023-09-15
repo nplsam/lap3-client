@@ -127,6 +127,14 @@ button#addNewTask-button {
     background-color: #f0baca;
     color:#7b3d53;
 }
+#PlannerCalendar .date-container {
+    display: flex;
+    justify-content: space-between;
+}
+#PlannerCalendar .date-container svg {
+    /* color:#7b3d53; */
+    cursor: pointer;
+}
 #PlannerCalendar .date {
     font-weight: 700;
     color:#7b3d53;
