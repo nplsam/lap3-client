@@ -304,3 +304,6 @@
 .filter-btn:hover {
   background-color: #fee7f9;
 }
+.timer-on-other-page {
+  display: none;
+}

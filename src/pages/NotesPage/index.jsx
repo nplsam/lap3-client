@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Split from "react-split";
 import { Sidebar, Editor } from "../../components";
 import { useNotes } from "../../contexts/NotesContext"
+import { Timer } from '../../components';
 import '../../assets/css/notes.css'
 
 const NotesPage = () => {
@@ -29,6 +30,15 @@ const NotesPage = () => {
 
   const sortedNotes = 
     notes.sort((a, b) => b.updatedAt - a.updatedAt);
+
+  const { noteText, setNoteTextById } = useNotes();
+
+  // Handling change to separate text content for each note
+  const currentNoteText = noteText[currentNoteId] || "";
+
+  const handleTextChange = (newText) => {
+    setNoteTextById(currentNoteId, newText);
+  };
 
   // Function to get username
   const getUsername = async () => {
@@ -227,11 +237,14 @@ async function updateNoteInAPI(text) {
             setTitle={setTitle}   
             subject={subject}     
             setSubject={setSubject} 
-            text={text}
-            setText={setText}
+            text={currentNoteText}
+            setText={handleTextChange}
             handleSave={() => handleSave(selectedNoteTitle)}
           />  
         </Split>
+        <div  className="timer-on-other-page">
+                <Timer />
+        </div>
     </main>
   );
 };
