@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/AuthContext'
 const Login = () => {
   const navigate = useNavigate()
 
-  const { isLoggedIn, setIsLoggedIn, username, setUsername, password, setPassword } = useAuth()
+  const { setIsLoggedIn, username, setUsername, password, setPassword } = useAuth()
   const [message, setMessage] = useState('')
 
   function handleUsername(e) {
@@ -30,8 +30,7 @@ const Login = () => {
         if (response.data.response.token) {
           localStorage.setItem('token', response.data.response.token);
           setIsLoggedIn(true);
-          // I need username to be saved on client side for request (Valentin)
-          // setUsername('');
+          setUsername('');
           setPassword('');
           navigate('/');
         } 

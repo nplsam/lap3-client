@@ -50,17 +50,19 @@ const PlannerItem = ({ task }) => {
   // Delete task from DB and tasks state
   async function deleteTask(task) {
     try {
-      const response = await fetch(`http://localhost:5000/notes/${task._id}`, {
+      const response = await fetch(`http://localhost:5000/planners/${task._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': localStorage.token
         },
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to delete the task');
       }
+
       setTasks((prevTasks) => prevTasks.filter((el) => el !== task));
+      setShowItem(!showItem)
     } catch (error) {
       console.error('Error deleting the task:', error);
 
@@ -95,12 +97,12 @@ const PlannerItem = ({ task }) => {
                   <button onClick={setupEditProcces}>Edit</button>
                   <button onClick={() => deleteTask(task)}>Delete</button>
                 </div>
-                {message && <p>{message}</p>}
+                {message && <p className='planner-message'>{message}</p>}
               </>
             )}
             {showEditButtons && (
               <>
-                <PlannerForm actionPost={false} currentTask={task}/>
+                <PlannerForm actionPost={false} currentTask={task} showEditButtons={showEditButtons} setshowEditButtons={setshowEditButtons}/>
                 <div className='item-buttons-container'>
                   <button className='fake-save-button'>Save</button>
                   <button onClick={rollbackEditProcces}>Cancel</button>

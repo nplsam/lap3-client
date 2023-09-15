@@ -72,7 +72,7 @@ const Register = () => {
         />
         
         <input className='register' type="submit" value="Register" />
-        {message && <p>{message}</p>}
+        {message && <p >{message}</p>}
       </form>
     </>
   )

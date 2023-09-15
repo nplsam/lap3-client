@@ -4,12 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import '../../assets/css/planner.css'
 import { usePlanner } from '../../contexts/PlannerContext';
-import { useAuth } from '../../contexts/AuthContext';
 
 function PlannerPage() {
-
-  // Import username
-  const { username } = useAuth()
 
   // Define data
   const { setTasks } = usePlanner();
@@ -20,8 +16,34 @@ function PlannerPage() {
     setshowAddForm(!showAddForm)
   }
 
+  // Function to get username
+  const getUsername = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/auth/find', {
+        method: 'GET',
+        headers: {
+          'Authorization': localStorage.token
+        },
+      });
+
+      if(response.status != 200) {
+        throw new Error('Failed to logout')
+      }
+
+      const data = await response.json()
+
+      return data.response.username[0].username
+      
+    } catch (error) {
+      console.error('Failde to get username: ', error)
+    }
+  }
+
   // Fetch all user tasks
   const fetchTasks = async () => {
+
+    const username = await getUsername()
+
     try {
       const response = await fetch(`http://localhost:5000/planners/user/${username}`, {
         method: 'GET',
@@ -29,15 +51,13 @@ function PlannerPage() {
           'Authorization': localStorage.token
         },
       });
-      console.log(response.status)
-      if (response.status == 404) {
-        console.log('run')
-        return setTasks([])
-      } else if (!response.ok) {
+
+      if (!response.ok) {
         throw new Error('Failed to fetch tasks');
       }
+      
       const data = await response.json()
-      setTasks(data)
+      setTasks(data.tasks)
     } catch (error) {
       console.error('Error fetching notes:', error)
     }

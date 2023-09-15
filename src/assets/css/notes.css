@@ -32,7 +32,7 @@
     justify-content: flex-start;
     align-items: center;
     margin-left: 10px;
-    color: #34252F;
+    color: #7b3d53;
   }
   
   .sidebar--header > h3 {
@@ -42,26 +42,25 @@
   }
   
   .new-note {
-    cursor: pointer;
-    background-color: #3b52498b;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
     border: none;
-    color: #34252F;
-    border-radius: 3px;
-    height: 25px;
-    width: 25px;
-    margin-top: -14px;
-    font-weight: bold;
-  }
-  
-  .first-note {
     cursor: pointer;
-    background-color: #3b52498b;
-    border: none;
-    color: #34252F;
-    border-radius: 3px;
-    padding: 1rem;
+    border: 4px solid #cea3bf;
+    box-shadow: 0 0 1px 6px #fbffff;
+    border-radius: 20px;
+    background-color: #99fff1;
+    color: #7b3d53;
+    transition: background-color 0.3s ease;
+    width: 50px;
+    font-family: 'Alkatra', cursive;
+    font-family: 'Caveat', cursive;
     font-family: 'Varela Round', sans-serif;
-    font-weight: bold;
+    font-size: 20px;
+    transform: scale(0.85);
+    font-weight: bold
   }
   
   .editor {
@@ -78,7 +77,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(204, 204, 204, 0.3);
+    background-color: #fee7f9;
+    border: 4px solid #cea3bf;
     margin-bottom: 10px;
     border-radius: 5px;
     margin-left: 10px;
@@ -105,7 +105,7 @@
     font-size: 1.0rem;
     font-weight: 400;
     line-height: 1.2rem;
-    color: #34252F;
+    color: #7b3d53;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -115,24 +115,25 @@
 
   .subject-snippet {
     font-size: 0.8rem;
-    color: #34252F;
+    color: #7b3d53;
     margin-right: 10px;
     font-weight: bold;
   }
   
   .selected-note {
-    background-color: #519872;
+    background-color: #d1f8ff;
+    border: 4px solid #cea3bf;
     margin-left: 10px;
     width: 95%;
     border-radius: 5px;
   }
   
   .selected-note .text-snippet {
-    color: #34252F;
+    color: #7b3d53;
   }
   
   .gutter {
-    background-color: #A4B494;
+    background-color: #ffffff00;
     background-repeat: no-repeat;
     background-position: 50%;
     margin-left: -3px;
@@ -149,17 +150,8 @@
   .split {
     display: flex;
   }
-  
-  .no-notes {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #A4B494;
-  }
-  
+
+
   .delete-btn {
     display: none;
     background: none;
@@ -219,17 +211,27 @@
   }
 
   .save-btn {
-    cursor: pointer;
-    background-color: #3b52498b;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
     border: none;
-    color: #34252F;
-    border-radius: 3px;
-    height: 30px;
-    width: 50px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    font-size: 14px;
-    font-weight: bold;
+    cursor: pointer;
+    border: 4px solid #cea3bf;
+    box-shadow: 0 0 1px 6px #fbffff;
+    border-radius: 20px;
+    background-color: #99fff1;
+    color: #7b3d53;
+    transition: background-color 0.3s ease;
+    width: 90px;
+    font-family: 'Alkatra', cursive;
+    font-family: 'Caveat', cursive;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+    transform: scale(0.85)
+  }
+
+  .save-btn:hover {
+    background-color: #fee7f9;
   }
 
   .pane.editor input[type="text"] {
@@ -260,7 +262,7 @@
 
   .search-notes input[type="text"]:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #9f9fa0;
   }
 
   .subject-filter input[type="text"] {
@@ -275,19 +277,30 @@
 
 .subject-filter input[type="text"]:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #9f9fa0;
 }
 
 .filter-btn {
-  cursor: pointer;
-  background-color: #3b52498b;
-  border: none;
-  color: #34252F;
-  border-radius: 3px;
-  height: 30px;
-  width: 50px;
-  margin-bottom: 10px;
   margin-left: 10px;
-  font-size: 14px;
-  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border: 4px solid #cea3bf;
+  box-shadow: 0 0 1px 6px #fbffff;
+  border-radius: 20px;
+  background-color: #99fff1;
+  color: #7b3d53;
+  transition: background-color 0.3s ease;
+  width: 90px;
+  font-family: 'Alkatra', cursive;
+  font-family: 'Caveat', cursive;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+  transform: scale(0.85)
+}
+
+.filter-btn:hover {
+  background-color: #fee7f9;
 }
