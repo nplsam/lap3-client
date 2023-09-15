@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { usePlanner } from '../../contexts/PlannerContext';
-import { useAuth } from '../../contexts/AuthContext';
 
-const PlannerForm = ({ actionPost, currentTask, showEditButtons, setshowEditButtons }) => {
+const PlannerForm = ({ username, actionPost, currentTask, showEditButtons, setshowEditButtons }) => {
 
   // Import data
   const { inputDate, setInputDate, inputTag, setInputTag, inputContent, setInputContent, setTasks } = usePlanner()
-  const { username } = useAuth()
 
   // Define form message
   const [message, setMessage] = useState('')
@@ -107,15 +105,10 @@ const PlannerForm = ({ actionPost, currentTask, showEditButtons, setshowEditButt
         setMessage('');
         // Change buttons
         setshowEditButtons(!showEditButtons)
-      }, 2000);
+      }, 1000);
 
     } catch (error) {
       console.error('Error update a task:', error);
-
-      // Clean inputs
-      setInputDate('');
-      setInputTag('');
-      setInputContent('');
 
       // Display error message 
       setMessage('Failed to update a task. Try again.');
