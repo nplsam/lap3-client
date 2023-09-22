@@ -7,14 +7,17 @@ import { usePlanner } from '../../contexts/PlannerContext';
 
 function PlannerPage() {
 
+  // Import data
+  const { inputDate, setInputDate, setTasks } = usePlanner();
+
   // Define data
-  const { setTasks } = usePlanner();
   const [showAddForm, setshowAddForm] = useState()
   const [username, setUsername] = useState('')
 
   // Toggle flag for form popup
   const toggleAddForm = () => {
     setshowAddForm(!showAddForm)
+    setInputDate('')
   }
 
   // Function to get username
