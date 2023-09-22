@@ -9,7 +9,7 @@ const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   const handleLogout = async () => {
-    const response = await fetch ('http://localhost:5000/auth/logout', {
+    const response = await fetch ('https://project3-server-4bv6.onrender.com/auth/logout', {
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
