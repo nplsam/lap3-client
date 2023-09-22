@@ -20,7 +20,7 @@ function PlannerPage() {
   // Function to get username
   const getUsername = async () => {
     try {
-      const response = await fetch('http://localhost:5000/auth/find', {
+      const response = await fetch('https://project3-server-4bv6.onrender.com/auth/find', {
         method: 'GET',
         headers: {
           'Authorization': localStorage.token
@@ -47,7 +47,7 @@ function PlannerPage() {
     setUsername(usernameData)
 
     try {
-      const response = await fetch(`http://localhost:5000/planners/user/${usernameData}`, {
+      const response = await fetch(`https://project3-server-4bv6.onrender.com/planners/user/${usernameData}`, {
         method: 'GET',
         headers: {
           'Authorization': localStorage.token

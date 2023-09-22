@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault()
     if (username.length > 0 && password.length > 0) {
       try {
-        await axios.post('http://localhost:5000/auth/register', {
+        await axios.post('https://project3-server-4bv6.onrender.com/auth/register', {
           username: username,
           password: password,
         });

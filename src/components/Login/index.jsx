@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     if (username.length > 0 && password.length > 0) {
       try {
-        const response = await axios.post('http://localhost:5000/auth/login', {
+        const response = await axios.post('https://project3-server-4bv6.onrender.com/auth/login', {
           username: username,
           password: password,
         });

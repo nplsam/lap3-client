@@ -40,7 +40,7 @@ const PlannerForm = ({ username, actionPost, currentTask, showEditButtons, setsh
   // Send new task to DB and update tasks state
   async function createNewTask() {
     try {
-      const response = await fetch('http://localhost:5000/planners', {
+      const response = await fetch('https://project3-server-4bv6.onrender.com/planners', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const PlannerForm = ({ username, actionPost, currentTask, showEditButtons, setsh
   // Update task in DB and update tasks state
   async function updateTask() {
     try {
-      const response = await fetch(`http://localhost:5000/planners/${currentTask._id}`, {
+      const response = await fetch(`https://project3-server-4bv6.onrender.com/planners/${currentTask._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
